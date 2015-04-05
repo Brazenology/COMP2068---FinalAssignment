@@ -69,14 +69,23 @@
   <ItemGroup>
     <Content Include="css\game.css" />
     <Content Include="index.html" />
-    <Content Include="Scripts\lib\references.js" />
+    <Content Include="Scripts\lib\easeljs-0.8.0.min.js" />
+    <Content Include="Scripts\lib\preloadjs-0.6.0.min.js" />
+    <Content Include="Scripts\lib\soundjs-0.6.0.min.js" />
+    <Content Include="Scripts\lib\tweenjs-0.6.0.min.js" />
+    <Content Include="Scripts\references.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\lib\game.ts" />
+    <TypeScriptCompile Include="Scripts\game.ts" />
+    <TypeScriptCompile Include="Scripts\lib\createjs-lib.d.ts" />
+    <TypeScriptCompile Include="Scripts\lib\easeljs.d.ts" />
+    <TypeScriptCompile Include="Scripts\lib\preloadjs.d.ts" />
+    <TypeScriptCompile Include="Scripts\lib\soundjs.d.ts" />
+    <TypeScriptCompile Include="Scripts\lib\tweenjs.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\audio\" />
