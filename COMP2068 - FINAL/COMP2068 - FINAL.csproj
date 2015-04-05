@@ -67,6 +67,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\images\DeepwoodWitchCard.PNG" />
+    <Content Include="assets\images\FerociousTalonCard.PNG" />
+    <Content Include="assets\images\IncessantZombieCard.PNG" />
+    <Content Include="assets\images\MonsterMatcherBackground.PNG" />
+    <Content Include="assets\images\StormboundGargoyleCard.PNG" />
+    <Content Include="assets\images\tinyWhelpCard.PNG" />
     <Content Include="css\game.css" />
     <Content Include="index.html" />
     <Content Include="Scripts\lib\easeljs-0.8.0.min.js" />
@@ -90,7 +96,6 @@
   <ItemGroup>
     <Folder Include="assets\audio\" />
     <Folder Include="assets\fonts\" />
-    <Folder Include="assets\images\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
