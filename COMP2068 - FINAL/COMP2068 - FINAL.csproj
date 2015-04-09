@@ -67,6 +67,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\images\cardback.png" />
     <Content Include="assets\images\DeepwoodWitchCard.PNG" />
     <Content Include="assets\images\FerociousTalonCard.PNG" />
     <Content Include="assets\images\IncessantZombieCard.PNG" />
