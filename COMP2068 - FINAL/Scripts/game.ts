@@ -4,6 +4,9 @@ var stage: createjs.Stage;
 // Game Objects
 var unveiledCards: number;
 var background: createjs.Bitmap;
+var startPage: createjs.Bitmap;
+var playButton: createjs.Bitmap;
+var instructionsButton: createjs.Bitmap;
 var game: createjs.Container; 
 var cardsL1: createjs.Bitmap[] = [];
 var cardsL2: createjs.Bitmap[] = [];
@@ -42,6 +45,22 @@ var cardContainers: createjs.Container[] = [];
 //Text Objects to be placed within the containers
 var scoreText = new createjs.Text("" + score, "25px Consolas", "#000000");
 var lifeText = new createjs.Text("" + life, "25px Consolas", "#000000");
+
+function playButtonOut() {
+    playButton.alpha = 1.0;
+}
+
+function playButtonOver() {
+    playButton.alpha = 0.5;
+}
+
+function instructionsButtonOut() {
+    instructionsButton.alpha = 1.0;
+}
+
+function instructionsButtonOver() {
+    instructionsButton.alpha = 0.5;
+}
 
 function init() {
     canvas = document.getElementById("canvas");
@@ -542,6 +561,7 @@ function checkMatchOneL1() {
                 lifeText.text = "" + life;
         }
     }
+    checkBoardState();
 }
 
 function checkMatchTwoL1() {
@@ -673,6 +693,7 @@ function checkMatchTwoL1() {
                 lifeText.text = "" + life;
         }
     }
+    checkBoardState();
 }
 
 function checkMatchThreeL1() {
@@ -804,7 +825,9 @@ function checkMatchThreeL1() {
                 lifeText.text = "" + life;
         }
     }
+    checkBoardState();
 }
+
 function checkMatchFourL1() {
     if (unveiledCardsL1[3] == unveiledCardsL1[1] || unveiledCardsL1[3] == unveiledCardsL1[2] || unveiledCardsL1[3] == unveiledCardsL1[0]
         || unveiledCardsL1[3] == unveiledCardsL1[4]) {
@@ -934,6 +957,7 @@ function checkMatchFourL1() {
                 lifeText.text = "" + life;
         }
     }
+    checkBoardState();
 }
 
 function checkMatchFiveL1() {
@@ -1065,6 +1089,7 @@ function checkMatchFiveL1() {
                 lifeText.text = "" + life;
         }
     }
+    checkBoardState();
 }
 
 function checkMatchOneL2() {
@@ -1196,6 +1221,7 @@ function checkMatchOneL2() {
                 lifeText.text = "" + life;
         }
     }
+    checkBoardState();
 }
 
 function checkMatchTwoL2() {
@@ -1327,6 +1353,7 @@ function checkMatchTwoL2() {
                 lifeText.text = "" + life;
         }
     }
+    checkBoardState();
 }
 
 function checkMatchThreeL2() {
@@ -1458,6 +1485,7 @@ function checkMatchThreeL2() {
                 lifeText.text = "" + life;
         }
     }
+    checkBoardState();
 }
 
 function checkMatchFourL2() {
@@ -1589,6 +1617,7 @@ function checkMatchFourL2() {
                 lifeText.text = "" + life;
         }
     }
+    checkBoardState();
 }
 
 function checkMatchFiveL2() {
@@ -1720,6 +1749,32 @@ function checkMatchFiveL2() {
                 lifeText.text = "" + life;
         }
     }
+    checkBoardState();
+}
+
+function checkBoardState() {
+    if (unveiledCardsL1[0, 1, 2, 3, 4] == storedCardsL1[0, 1, 2, 3, 4] && unveiledCardsL2[0, 1, 2, 3, 4] == storedCardsL2[0, 1, 2, 3, 4]){
+        console.log("Board State changed");
+        for (var card = 0; card < 5; card++) {
+            game.removeChild(cardsL1[card]);
+        }
+        for (var card = 0; card < 5; card++) {
+            game.removeChild(cardsL2[card]);
+        }
+        unveiledTinyWhelps = 0;
+        unveiledIncessantZombies = 0;
+        unveiledFerociousTalons = 0;
+        unveiledDeepwoodWitches = 0;
+        unveiledStormboundGargoyles = 0;
+        BoardState();
+        LoadCards();
+    }
+}
+
+function checkLife() {
+    if (life <= 0) {
+
+    }
 }
 
 /* Utility function to check if a value falls within a range of bounds */
@@ -1782,6 +1837,12 @@ function BoardState() {
     return secondLine;
 }
 
+function playNow() {
+    game.removeChild(playButton);
+    game.removeChild(instructionsButton);
+    game.removeChild(startPage);
+}
+
 function gameLoop() {
     stage.update();
 }
@@ -1812,5 +1873,28 @@ function createUI(): void {
     game.addChild(lifeContainer);
 
     BoardState();
-    LoadCards();    
+    LoadCards();  
+    
+    startPage = new createjs.Bitmap("assets/images/startPage.png");  
+    game.addChild(startPage);  
+
+    playButton = new createjs.Bitmap("assets/images/playButton.png");
+    playButton.x = 198;
+    playButton.y = 300;
+    game.addChild(playButton);
+
+    playButton.addEventListener("click", playNow);
+    playButton.addEventListener("mouseover", playButtonOver);
+    playButton.addEventListener("mouseout", playButtonOut);
+
+    instructionsButton = new createjs.Bitmap("assets/images/instructionsButton.png");
+    instructionsButton.x = 198;
+    instructionsButton.y = 380;
+    game.addChild(instructionsButton);
+
+    instructionsButton.addEventListener("click", playNow);
+    instructionsButton.addEventListener("mouseover", instructionsButtonOver);
+    instructionsButton.addEventListener("mouseout", instructionsButtonOut);
+    
+     
 }

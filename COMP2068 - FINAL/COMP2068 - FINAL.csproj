@@ -71,7 +71,10 @@
     <Content Include="assets\images\DeepwoodWitchCard.PNG" />
     <Content Include="assets\images\FerociousTalonCard.PNG" />
     <Content Include="assets\images\IncessantZombieCard.PNG" />
+    <Content Include="assets\images\instructionsButton.png" />
     <Content Include="assets\images\MonsterMatcherBackground.PNG" />
+    <Content Include="assets\images\playButton.png" />
+    <Content Include="assets\images\startPage.PNG" />
     <Content Include="assets\images\StormboundGargoyleCard.PNG" />
     <Content Include="assets\images\tinyWhelpCard.PNG" />
     <Content Include="css\game.css" />
