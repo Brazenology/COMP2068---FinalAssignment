@@ -5,6 +5,8 @@ var stage: createjs.Stage;
 var unveiledCards: number;
 var background: createjs.Bitmap;
 var startPage: createjs.Bitmap;
+var gameOverPage: createjs.Bitmap;
+var playAgainButton: createjs.Bitmap;
 var playButton: createjs.Bitmap;
 var instructionsButton: createjs.Bitmap;
 var game: createjs.Container; 
@@ -18,6 +20,7 @@ var unveiledCardsL1: Array<number> = [];
 var unveiledCardsL2: Array<number> = [];
 var scoreContainer = new createjs.Container();
 var lifeContainer = new createjs.Container();
+var gameOverScoreContainer = new createjs.Container();
 
 // Game Variables
 var score = 0;
@@ -60,6 +63,14 @@ function instructionsButtonOut() {
 
 function instructionsButtonOver() {
     instructionsButton.alpha = 0.5;
+}
+
+function playAgainButtonOut() {
+    playAgainButton.alpha = 1.0;
+}
+
+function playAgainButtonOver() {
+    playAgainButton.alpha = 0.5;
 }
 
 function init() {
@@ -522,47 +533,33 @@ function checkMatchOneL1() {
                 scoreText.text = "" + score;
                 break;
         }
-    } else if (unveiledCardsL1[0] != unveiledCardsL1[1] || unveiledCardsL1[0] != unveiledCardsL1[2] || unveiledCardsL1[0] != unveiledCardsL1[3]
-        || unveiledCardsL1[0] != unveiledCardsL1[4]) {
-        switch (unveiledCardsL1[0]){
-            case unveiledCardsL1[0] = 1:
+    } else if (unveiledCardsL1[0] != unveiledCardsL1[1] && unveiledCardsL1[0] != unveiledCardsL1[2] && unveiledCardsL1[0] != unveiledCardsL1[3]
+        && unveiledCardsL1[0] != unveiledCardsL1[4]) {
+        if (unveiledCardsL1[0] != unveiledCardsL2[0] && unveiledCardsL1[0] != unveiledCardsL2[1] && unveiledCardsL1[0] != unveiledCardsL2[2]
+            && unveiledCardsL1[0] != unveiledCardsL2[3] && unveiledCardsL1[0] != unveiledCardsL2[4]) {
+            switch (unveiledCardsL1[0]) {
+                case unveiledCardsL1[0] = 1:
                     life -= unveiledTinyWhelps;
                     lifeText.text = "" + life;
-            case unveiledCardsL1[0] = 2:
-                life -= unveiledIncessantZombies * 2;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[0] = 3:
-                life -= unveiledFerociousTalons * 3;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[0] = 4:
-                life -= unveiledDeepwoodWitches * 4;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[0] = 5:
-                life -= unveiledStormboundGargoyles * 5;
-                lifeText.text = "" + life;
+                case unveiledCardsL1[0] = 2:
+                    life -= unveiledIncessantZombies * 2;
+                    lifeText.text = "" + life;
+                case unveiledCardsL1[0] = 3:
+                    life -= unveiledFerociousTalons * 3;
+                    lifeText.text = "" + life;
+                case unveiledCardsL1[0] = 4:
+                    life -= unveiledDeepwoodWitches * 4;
+                    lifeText.text = "" + life;
+                case unveiledCardsL1[0] = 5:
+                    life -= unveiledStormboundGargoyles * 5;
+                    lifeText.text = "" + life;
+            }
         }
-    } else if (unveiledCardsL1[0] != unveiledCardsL2[0] || unveiledCardsL1[0] != unveiledCardsL2[1] || unveiledCardsL1[0] != unveiledCardsL2[2]
-        || unveiledCardsL1[0] != unveiledCardsL2[3] || unveiledCardsL1[0] != unveiledCardsL2[4]) {
-        switch (unveiledCardsL1[0]) {
-            case unveiledCardsL1[0] = 1:
-                life -= unveiledTinyWhelps;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[0] = 2:
-                life -= unveiledIncessantZombies * 2;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[0] = 3:
-                life -= unveiledFerociousTalons * 3;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[0] = 4:
-                life -= unveiledDeepwoodWitches * 4;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[0] = 5:
-                life -= unveiledStormboundGargoyles * 5;
-                lifeText.text = "" + life;
-        }
+        checkBoardState();
+        checkLife();
     }
-    checkBoardState();
 }
+
 
 function checkMatchTwoL1() {
     if (unveiledCardsL1[1] == unveiledCardsL1[0] || unveiledCardsL1[1] == unveiledCardsL1[2] || unveiledCardsL1[1] == unveiledCardsL1[3]
@@ -654,46 +651,31 @@ function checkMatchTwoL1() {
                 scoreText.text = "" + score;
                 break;
         }
-    } else if (unveiledCardsL1[1] != unveiledCardsL1[0] || unveiledCardsL1[1] != unveiledCardsL1[2] || unveiledCardsL1[1] != unveiledCardsL1[3]
-        || unveiledCardsL1[1] != unveiledCardsL1[4]) {
-        switch (unveiledCardsL1[1]) {
-            case unveiledCardsL1[1] = 1:
-                life -= unveiledTinyWhelps;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[1] = 2:
-                life -= unveiledIncessantZombies * 2;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[1] = 3:
-                life -= unveiledFerociousTalons * 3;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[1] = 4:
-                life -= unveiledDeepwoodWitches * 4;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[1] = 5:
-                life -= unveiledStormboundGargoyles * 5;
-                lifeText.text = "" + life;
-        }
-    } else if (unveiledCardsL1[1] != unveiledCardsL2[0] || unveiledCardsL1[1] != unveiledCardsL2[1] || unveiledCardsL1[1] != unveiledCardsL2[2]
-        || unveiledCardsL1[1] != unveiledCardsL2[3] || unveiledCardsL1[1] != unveiledCardsL2[4]) {
-        switch (unveiledCardsL1[1]) {
-            case unveiledCardsL1[1] = 1:
-                life -= unveiledTinyWhelps;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[1] = 2:
-                life -= unveiledIncessantZombies * 2;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[1] = 3:
-                life -= unveiledFerociousTalons * 3;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[1] = 4:
-                life -= unveiledDeepwoodWitches * 4;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[1] = 5:
-                life -= unveiledStormboundGargoyles * 5;
-                lifeText.text = "" + life;
+    } else if (unveiledCardsL1[1] != unveiledCardsL1[0] && unveiledCardsL1[1] != unveiledCardsL1[2] && unveiledCardsL1[1] != unveiledCardsL1[3]
+        && unveiledCardsL1[1] != unveiledCardsL1[4]) {
+        if (unveiledCardsL1[1] != unveiledCardsL2[0] && unveiledCardsL1[1] != unveiledCardsL2[1] && unveiledCardsL1[1] != unveiledCardsL2[2]
+            && unveiledCardsL1[1] != unveiledCardsL2[3] && unveiledCardsL1[1] != unveiledCardsL2[4]) {
+            switch (unveiledCardsL1[1]) {
+                case unveiledCardsL1[1] = 1:
+                    life -= unveiledTinyWhelps;
+                    lifeText.text = "" + life;
+                case unveiledCardsL1[1] = 2:
+                    life -= unveiledIncessantZombies * 2;
+                    lifeText.text = "" + life;
+                case unveiledCardsL1[1] = 3:
+                    life -= unveiledFerociousTalons * 3;
+                    lifeText.text = "" + life;
+                case unveiledCardsL1[1] = 4:
+                    life -= unveiledDeepwoodWitches * 4;
+                    lifeText.text = "" + life;
+                case unveiledCardsL1[1] = 5:
+                    life -= unveiledStormboundGargoyles * 5;
+                    lifeText.text = "" + life;
+            }
         }
     }
     checkBoardState();
+    checkLife();
 }
 
 function checkMatchThreeL1() {
@@ -786,8 +768,10 @@ function checkMatchThreeL1() {
                 scoreText.text = "" + score;
                 break;
         }
-    } else if (unveiledCardsL1[2] != unveiledCardsL1[1] || unveiledCardsL1[2] != unveiledCardsL1[0] || unveiledCardsL1[2] != unveiledCardsL1[3]
-        || unveiledCardsL1[2] != unveiledCardsL1[4]) {
+    } else if (unveiledCardsL1[2] != unveiledCardsL1[1] && unveiledCardsL1[2] != unveiledCardsL1[0] && unveiledCardsL1[2] != unveiledCardsL1[3]
+        && unveiledCardsL1[2] != unveiledCardsL1[4]) {
+        if (unveiledCardsL1[2] != unveiledCardsL2[0] && unveiledCardsL1[2] != unveiledCardsL2[1] && unveiledCardsL1[2] != unveiledCardsL2[2]
+            && unveiledCardsL1[2] != unveiledCardsL2[3] && unveiledCardsL1[2] != unveiledCardsL2[4]) {
         switch (unveiledCardsL1[2]) {
             case unveiledCardsL1[2] = 1:
                 life -= unveiledTinyWhelps;
@@ -804,28 +788,11 @@ function checkMatchThreeL1() {
             case unveiledCardsL1[2] = 5:
                 life -= unveiledStormboundGargoyles * 5;
                 lifeText.text = "" + life;
-        }
-    } else if (unveiledCardsL1[2] != unveiledCardsL2[0] || unveiledCardsL1[2] != unveiledCardsL2[1] || unveiledCardsL1[2] != unveiledCardsL2[2]
-        || unveiledCardsL1[2] != unveiledCardsL2[3] || unveiledCardsL1[2] != unveiledCardsL2[4]) {
-        switch (unveiledCardsL1[2]) {
-            case unveiledCardsL1[2] = 1:
-                life -= unveiledTinyWhelps;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[2] = 2:
-                life -= unveiledIncessantZombies * 2;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[2] = 3:
-                life -= unveiledFerociousTalons * 3;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[2] = 4:
-                life -= unveiledDeepwoodWitches * 4;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[2] = 5:
-                life -= unveiledStormboundGargoyles * 5;
-                lifeText.text = "" + life;
-        }
+            }
+        } 
     }
     checkBoardState();
+    checkLife();
 }
 
 function checkMatchFourL1() {
@@ -918,46 +885,31 @@ function checkMatchFourL1() {
                 scoreText.text = "" + score;
                 break;
         }
-    } else if (unveiledCardsL1[3] != unveiledCardsL1[1] || unveiledCardsL1[3] != unveiledCardsL1[2] || unveiledCardsL1[3] != unveiledCardsL1[0]
-        || unveiledCardsL1[3] != unveiledCardsL1[4]) {
-        switch (unveiledCardsL1[3]) {
-            case unveiledCardsL1[3] = 1:
-                life -= unveiledTinyWhelps;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[3] = 2:
-                life -= unveiledIncessantZombies * 2;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[3] = 3:
-                life -= unveiledFerociousTalons * 3;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[3] = 4:
-                life -= unveiledDeepwoodWitches * 4;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[3] = 5:
-                life -= unveiledStormboundGargoyles * 5;
-                lifeText.text = "" + life;
-        }
-    } else if (unveiledCardsL1[3] != unveiledCardsL2[0] || unveiledCardsL1[3] != unveiledCardsL2[1] || unveiledCardsL1[3] != unveiledCardsL2[2]
-        || unveiledCardsL1[3] != unveiledCardsL2[3] || unveiledCardsL1[3] != unveiledCardsL2[4]) {
-        switch (unveiledCardsL1[3]) {
-            case unveiledCardsL1[3] = 1:
-                life -= unveiledTinyWhelps;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[3] = 2:
-                life -= unveiledIncessantZombies * 2;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[3] = 3:
-                life -= unveiledFerociousTalons * 3;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[3] = 4:
-                life -= unveiledDeepwoodWitches * 4;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[3] = 5:
-                life -= unveiledStormboundGargoyles * 5;
-                lifeText.text = "" + life;
+    } else if (unveiledCardsL1[3] != unveiledCardsL1[1] && unveiledCardsL1[3] != unveiledCardsL1[2] && unveiledCardsL1[3] != unveiledCardsL1[0]
+        && unveiledCardsL1[3] != unveiledCardsL1[4]) {
+        if (unveiledCardsL1[3] != unveiledCardsL2[0] && unveiledCardsL1[3] != unveiledCardsL2[1] && unveiledCardsL1[3] != unveiledCardsL2[2]
+            && unveiledCardsL1[3] != unveiledCardsL2[3] && unveiledCardsL1[3] != unveiledCardsL2[4]) {
+            switch (unveiledCardsL1[3]) {
+                case unveiledCardsL1[3] = 1:
+                    life -= unveiledTinyWhelps;
+                    lifeText.text = "" + life;
+                case unveiledCardsL1[3] = 2:
+                    life -= unveiledIncessantZombies * 2;
+                    lifeText.text = "" + life;
+                case unveiledCardsL1[3] = 3:
+                    life -= unveiledFerociousTalons * 3;
+                    lifeText.text = "" + life;
+                case unveiledCardsL1[3] = 4:
+                    life -= unveiledDeepwoodWitches * 4;
+                    lifeText.text = "" + life;
+                case unveiledCardsL1[3] = 5:
+                    life -= unveiledStormboundGargoyles * 5;
+                    lifeText.text = "" + life;
+            }
         }
     }
     checkBoardState();
+    checkLife();
 }
 
 function checkMatchFiveL1() {
@@ -1050,8 +1002,10 @@ function checkMatchFiveL1() {
                 scoreText.text = "" + score;
                 break;
         }
-    } else if (unveiledCardsL1[4] != unveiledCardsL1[1] || unveiledCardsL1[4] != unveiledCardsL1[2] || unveiledCardsL1[4] != unveiledCardsL1[3]
-        || unveiledCardsL1[4] != unveiledCardsL1[0]) {
+    } else if (unveiledCardsL1[4] != unveiledCardsL1[1] && unveiledCardsL1[4] != unveiledCardsL1[2] && unveiledCardsL1[4] != unveiledCardsL1[3]
+        && unveiledCardsL1[4] != unveiledCardsL1[0]) {
+        if (unveiledCardsL1[4] != unveiledCardsL2[0] && unveiledCardsL1[4] != unveiledCardsL2[1] && unveiledCardsL1[4] != unveiledCardsL2[2]
+            && unveiledCardsL1[4] != unveiledCardsL2[3] && unveiledCardsL1[4] != unveiledCardsL2[4]) {
         switch (unveiledCardsL1[4]) {
             case unveiledCardsL1[4] = 1:
                 life -= unveiledTinyWhelps;
@@ -1068,28 +1022,11 @@ function checkMatchFiveL1() {
             case unveiledCardsL1[4] = 5:
                 life -= unveiledStormboundGargoyles * 5;
                 lifeText.text = "" + life;
-        }
-    } else if (unveiledCardsL1[4] != unveiledCardsL2[0] || unveiledCardsL1[4] != unveiledCardsL2[1] || unveiledCardsL1[4] != unveiledCardsL2[2]
-        || unveiledCardsL1[4] != unveiledCardsL2[3] || unveiledCardsL1[4] != unveiledCardsL2[4]) {
-        switch (unveiledCardsL1[4]) {
-            case unveiledCardsL1[4] = 1:
-                life -= unveiledTinyWhelps;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[4] = 2:
-                life -= unveiledIncessantZombies * 2;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[4] = 3:
-                life -= unveiledFerociousTalons * 3;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[4] = 4:
-                life -= unveiledDeepwoodWitches * 4;
-                lifeText.text = "" + life;
-            case unveiledCardsL1[4] = 5:
-                life -= unveiledStormboundGargoyles * 5;
-                lifeText.text = "" + life;
-        }
+            }
+        } 
     }
     checkBoardState();
+    checkLife();
 }
 
 function checkMatchOneL2() {
@@ -1182,8 +1119,10 @@ function checkMatchOneL2() {
                 scoreText.text = "" + score;
                 break;
         }
-    } else if (unveiledCardsL2[0] != unveiledCardsL1[0] || unveiledCardsL2[0] != unveiledCardsL1[1] || unveiledCardsL2[0] != unveiledCardsL1[2]
-        || unveiledCardsL2[0] != unveiledCardsL1[3] || unveiledCardsL2[0] != unveiledCardsL1[4]) {
+    } else if (unveiledCardsL2[0] != unveiledCardsL1[0] && unveiledCardsL2[0] != unveiledCardsL1[1] && unveiledCardsL2[0] != unveiledCardsL1[2]
+        && unveiledCardsL2[0] != unveiledCardsL1[3] && unveiledCardsL2[0] != unveiledCardsL1[4]) {
+        if (unveiledCardsL2[0] != unveiledCardsL2[1] && unveiledCardsL2[0] != unveiledCardsL2[2] && unveiledCardsL2[0] != unveiledCardsL2[3]
+            && unveiledCardsL2[0] != unveiledCardsL2[4]) {
         switch (unveiledCardsL2[0]) {
             case unveiledCardsL2[0] = 1:
                 life -= unveiledTinyWhelps;
@@ -1200,28 +1139,11 @@ function checkMatchOneL2() {
             case unveiledCardsL2[0] = 5:
                 life -= unveiledStormboundGargoyles * 5;
                 lifeText.text = "" + life;
-        }
-    } else if (unveiledCardsL2[0] != unveiledCardsL2[1] || unveiledCardsL2[0] != unveiledCardsL2[2] || unveiledCardsL2[0] != unveiledCardsL2[3]
-        || unveiledCardsL2[0] != unveiledCardsL2[4]) {
-        switch (unveiledCardsL2[0]) {
-            case unveiledCardsL2[0] = 1:
-                life -= unveiledTinyWhelps;
-                lifeText.text = "" + life;
-            case unveiledCardsL2[0] = 2:
-                life -= unveiledIncessantZombies * 2;
-                lifeText.text = "" + life;
-            case unveiledCardsL2[0] = 3:
-                life -= unveiledFerociousTalons * 3;
-                lifeText.text = "" + life;
-            case unveiledCardsL2[0] = 4:
-                life -= unveiledDeepwoodWitches * 4;
-                lifeText.text = "" + life;
-            case unveiledCardsL2[0] = 5:
-                life -= unveiledStormboundGargoyles * 5;
-                lifeText.text = "" + life;
+            }
         }
     }
     checkBoardState();
+    checkLife();
 }
 
 function checkMatchTwoL2() {
@@ -1314,8 +1236,10 @@ function checkMatchTwoL2() {
                 scoreText.text = "" + score;
                 break;
         }
-    } else if (unveiledCardsL2[1] != unveiledCardsL1[0] || unveiledCardsL2[1] != unveiledCardsL1[1] || unveiledCardsL2[1] != unveiledCardsL1[2]
-        || unveiledCardsL2[1] != unveiledCardsL1[3] || unveiledCardsL2[1] != unveiledCardsL1[4]) {
+    } else if (unveiledCardsL2[1] != unveiledCardsL1[0] && unveiledCardsL2[1] != unveiledCardsL1[1] && unveiledCardsL2[1] != unveiledCardsL1[2]
+        && unveiledCardsL2[1] != unveiledCardsL1[3] && unveiledCardsL2[1] != unveiledCardsL1[4]) {
+        if (unveiledCardsL2[1] != unveiledCardsL2[0] && unveiledCardsL2[1] != unveiledCardsL2[2] && unveiledCardsL2[1] != unveiledCardsL2[3]
+            && unveiledCardsL2[1] != unveiledCardsL2[4]) {
         switch (unveiledCardsL2[1]) {
             case unveiledCardsL2[1] = 1:
                 life -= unveiledTinyWhelps;
@@ -1332,28 +1256,11 @@ function checkMatchTwoL2() {
             case unveiledCardsL2[1] = 5:
                 life -= unveiledStormboundGargoyles * 5;
                 lifeText.text = "" + life;
-        }
-    } else if (unveiledCardsL2[1] != unveiledCardsL2[0] || unveiledCardsL2[1] != unveiledCardsL2[2] || unveiledCardsL2[1] != unveiledCardsL2[3]
-        || unveiledCardsL2[1] != unveiledCardsL2[4]) {
-        switch (unveiledCardsL2[1]) {
-            case unveiledCardsL2[1] = 1:
-                life -= unveiledTinyWhelps;
-                lifeText.text = "" + life;
-            case unveiledCardsL2[1] = 2:
-                life -= unveiledIncessantZombies * 2;
-                lifeText.text = "" + life;
-            case unveiledCardsL2[1] = 3:
-                life -= unveiledFerociousTalons * 3;
-                lifeText.text = "" + life;
-            case unveiledCardsL2[1] = 4:
-                life -= unveiledDeepwoodWitches * 4;
-                lifeText.text = "" + life;
-            case unveiledCardsL2[1] = 5:
-                life -= unveiledStormboundGargoyles * 5;
-                lifeText.text = "" + life;
+            }
         }
     }
     checkBoardState();
+    checkLife();
 }
 
 function checkMatchThreeL2() {
@@ -1446,46 +1353,31 @@ function checkMatchThreeL2() {
                 scoreText.text = "" + score;
                 break;
         }
-    } else if (unveiledCardsL2[2] != unveiledCardsL1[0] || unveiledCardsL2[2] != unveiledCardsL1[1] || unveiledCardsL2[2] != unveiledCardsL1[2]
-        || unveiledCardsL2[2] != unveiledCardsL1[3] || unveiledCardsL2[2] != unveiledCardsL1[4]) {
-        switch (unveiledCardsL2[2]) {
-            case unveiledCardsL2[2] = 1:
-                life -= unveiledTinyWhelps;
-                lifeText.text = "" + life;
-            case unveiledCardsL2[2] = 2:
-                life -= unveiledIncessantZombies * 2;
-                lifeText.text = "" + life;
-            case unveiledCardsL2[2] = 3:
-                life -= unveiledFerociousTalons * 3;
-                lifeText.text = "" + life;
-            case unveiledCardsL2[2] = 4:
-                life -= unveiledDeepwoodWitches * 4;
-                lifeText.text = "" + life;
-            case unveiledCardsL2[2] = 5:
-                life -= unveiledStormboundGargoyles * 5;
-                lifeText.text = "" + life;
-        }
-    } else if (unveiledCardsL2[2] != unveiledCardsL2[0] || unveiledCardsL2[2] != unveiledCardsL2[1] || unveiledCardsL2[2] != unveiledCardsL2[3]
-        || unveiledCardsL2[2] != unveiledCardsL2[4]) {
-        switch (unveiledCardsL2[2]) {
-            case unveiledCardsL2[2] = 1:
-                life -= unveiledTinyWhelps;
-                lifeText.text = "" + life;
-            case unveiledCardsL2[2] = 2:
-                life -= unveiledIncessantZombies * 2;
-                lifeText.text = "" + life;
-            case unveiledCardsL2[2] = 3:
-                life -= unveiledFerociousTalons * 3;
-                lifeText.text = "" + life;
-            case unveiledCardsL2[2] = 4:
-                life -= unveiledDeepwoodWitches * 4;
-                lifeText.text = "" + life;
-            case unveiledCardsL2[2] = 5:
-                life -= unveiledStormboundGargoyles * 5;
-                lifeText.text = "" + life;
+    } else if (unveiledCardsL2[2] != unveiledCardsL1[0] && unveiledCardsL2[2] != unveiledCardsL1[1] && unveiledCardsL2[2] != unveiledCardsL1[2]
+        && unveiledCardsL2[2] != unveiledCardsL1[3] && unveiledCardsL2[2] != unveiledCardsL1[4]) {
+        if (unveiledCardsL2[2] != unveiledCardsL2[0] && unveiledCardsL2[2] != unveiledCardsL2[1] && unveiledCardsL2[2] != unveiledCardsL2[3]
+            && unveiledCardsL2[2] != unveiledCardsL2[4]) {
+            switch (unveiledCardsL2[2]) {
+                case unveiledCardsL2[2] = 1:
+                    life -= unveiledTinyWhelps;
+                    lifeText.text = "" + life;
+                case unveiledCardsL2[2] = 2:
+                    life -= unveiledIncessantZombies * 2;
+                    lifeText.text = "" + life;
+                case unveiledCardsL2[2] = 3:
+                    life -= unveiledFerociousTalons * 3;
+                    lifeText.text = "" + life;
+                case unveiledCardsL2[2] = 4:
+                    life -= unveiledDeepwoodWitches * 4;
+                    lifeText.text = "" + life;
+                case unveiledCardsL2[2] = 5:
+                    life -= unveiledStormboundGargoyles * 5;
+                    lifeText.text = "" + life;
+            }
         }
     }
     checkBoardState();
+    checkLife();
 }
 
 function checkMatchFourL2() {
@@ -1578,8 +1470,10 @@ function checkMatchFourL2() {
                 scoreText.text = "" + score;
                 break;
         }
-    } else if (unveiledCardsL2[3] != unveiledCardsL1[0] || unveiledCardsL2[3] != unveiledCardsL1[1] || unveiledCardsL2[3] != unveiledCardsL1[2]
-        || unveiledCardsL2[3] != unveiledCardsL1[3] || unveiledCardsL2[3] != unveiledCardsL1[4]) {
+    } else if (unveiledCardsL2[3] != unveiledCardsL1[0] && unveiledCardsL2[3] != unveiledCardsL1[1] && unveiledCardsL2[3] != unveiledCardsL1[2]
+        && unveiledCardsL2[3] != unveiledCardsL1[3] && unveiledCardsL2[3] != unveiledCardsL1[4]) {
+        if (unveiledCardsL2[3] != unveiledCardsL2[0] && unveiledCardsL2[3] != unveiledCardsL2[2] && unveiledCardsL2[3] != unveiledCardsL2[1]
+            && unveiledCardsL2[3] != unveiledCardsL2[4]) {
         switch (unveiledCardsL2[3]) {
             case unveiledCardsL2[3] = 1:
                 life -= unveiledTinyWhelps;
@@ -1596,28 +1490,11 @@ function checkMatchFourL2() {
             case unveiledCardsL2[3] = 5:
                 life -= unveiledStormboundGargoyles * 5;
                 lifeText.text = "" + life;
-        }
-    } else if (unveiledCardsL2[3] != unveiledCardsL2[0] || unveiledCardsL2[3] != unveiledCardsL2[2] || unveiledCardsL2[3] != unveiledCardsL2[1]
-        || unveiledCardsL2[3] != unveiledCardsL2[4]) {
-        switch (unveiledCardsL2[3]) {
-            case unveiledCardsL2[3] = 1:
-                life -= unveiledTinyWhelps;
-                lifeText.text = "" + life;
-            case unveiledCardsL2[3] = 2:
-                life -= unveiledIncessantZombies * 2;
-                lifeText.text = "" + life;
-            case unveiledCardsL2[3] = 3:
-                life -= unveiledFerociousTalons * 3;
-                lifeText.text = "" + life;
-            case unveiledCardsL2[3] = 4:
-                life -= unveiledDeepwoodWitches * 4;
-                lifeText.text = "" + life;
-            case unveiledCardsL2[3] = 5:
-                life -= unveiledStormboundGargoyles * 5;
-                lifeText.text = "" + life;
-        }
+            }
+        } 
     }
     checkBoardState();
+    checkLife();
 }
 
 function checkMatchFiveL2() {
@@ -1710,8 +1587,10 @@ function checkMatchFiveL2() {
                 scoreText.text = "" + score;
                 break;
         }
-    } else if (unveiledCardsL2[4] != unveiledCardsL1[0] || unveiledCardsL2[4] != unveiledCardsL1[1] || unveiledCardsL2[4] != unveiledCardsL1[2]
-        || unveiledCardsL2[4] != unveiledCardsL1[3] || unveiledCardsL2[4] != unveiledCardsL1[4]) {
+    } else if (unveiledCardsL2[4] != unveiledCardsL1[0] && unveiledCardsL2[4] != unveiledCardsL1[1] && unveiledCardsL2[4] != unveiledCardsL1[2]
+        && unveiledCardsL2[4] != unveiledCardsL1[3] && unveiledCardsL2[4] != unveiledCardsL1[4]) {
+        if (unveiledCardsL2[4] != unveiledCardsL2[0] && unveiledCardsL2[4] != unveiledCardsL2[2] && unveiledCardsL2[4] != unveiledCardsL2[3]
+            && unveiledCardsL2[4] != unveiledCardsL2[1]) {
         switch (unveiledCardsL2[4]) {
             case unveiledCardsL2[4] = 1:
                 life -= unveiledTinyWhelps;
@@ -1728,53 +1607,106 @@ function checkMatchFiveL2() {
             case unveiledCardsL2[4] = 5:
                 life -= unveiledStormboundGargoyles * 5;
                 lifeText.text = "" + life;
-        }
-    } else if (unveiledCardsL2[4] != unveiledCardsL2[0] || unveiledCardsL2[4] != unveiledCardsL2[2] || unveiledCardsL2[4] != unveiledCardsL2[3]
-        || unveiledCardsL2[4] != unveiledCardsL2[1]) {
-        switch (unveiledCardsL2[4]) {
-            case unveiledCardsL2[4] = 1:
-                life -= unveiledTinyWhelps;
-                lifeText.text = "" + life;
-            case unveiledCardsL2[4] = 2:
-                life -= unveiledIncessantZombies * 2;
-                lifeText.text = "" + life;
-            case unveiledCardsL2[4] = 3:
-                life -= unveiledFerociousTalons * 3;
-                lifeText.text = "" + life;
-            case unveiledCardsL2[4] = 4:
-                life -= unveiledDeepwoodWitches * 4;
-                lifeText.text = "" + life;
-            case unveiledCardsL2[4] = 5:
-                life -= unveiledStormboundGargoyles * 5;
-                lifeText.text = "" + life;
+            }
         }
     }
     checkBoardState();
+    checkLife();
 }
 
 function checkBoardState() {
-    if (unveiledCardsL1[0, 1, 2, 3, 4] == storedCardsL1[0, 1, 2, 3, 4] && unveiledCardsL2[0, 1, 2, 3, 4] == storedCardsL2[0, 1, 2, 3, 4]){
-        console.log("Board State changed");
-        for (var card = 0; card < 5; card++) {
-            game.removeChild(cardsL1[card]);
+    if (unveiledCardsL1[0] == storedCardsL1[0] && unveiledCardsL1[1] == storedCardsL1[1] && unveiledCardsL1[2] == storedCardsL1[2]
+        && unveiledCardsL1[3] == storedCardsL1[3] && unveiledCardsL1[4] == storedCardsL1[4]) {
+        if (unveiledCardsL2[0] == storedCardsL2[0] && unveiledCardsL2[1] == storedCardsL2[1] && unveiledCardsL2[2] == storedCardsL2[2]
+            && unveiledCardsL2[3] == storedCardsL2[3] && unveiledCardsL2[4] == storedCardsL2[4]) {
+
+            console.log("Board State changed");
+            for (var card = 0; card < 5; card++) {
+                game.removeChild(cardsL1[card]);
+            }
+            for (var card = 0; card < 5; card++) {
+                game.removeChild(cardsL2[card]);
+            }
+            unveiledTinyWhelps = 0;
+            unveiledIncessantZombies = 0;
+            unveiledFerociousTalons = 0;
+            unveiledDeepwoodWitches = 0;
+            unveiledStormboundGargoyles = 0;
+            BoardState();
+            LoadCards();
         }
-        for (var card = 0; card < 5; card++) {
-            game.removeChild(cardsL2[card]);
-        }
-        unveiledTinyWhelps = 0;
-        unveiledIncessantZombies = 0;
-        unveiledFerociousTalons = 0;
-        unveiledDeepwoodWitches = 0;
-        unveiledStormboundGargoyles = 0;
-        BoardState();
-        LoadCards();
     }
 }
 
 function checkLife() {
     if (life <= 0) {
+        gameOverPage = new createjs.Bitmap("assets/images/gameOverPage.png");  
+        game.addChild(gameOverPage);
+
+        //Displays the player's score
+        gameOverScoreContainer.x = 360;
+        gameOverScoreContainer.y = 180;
+        gameOverScoreContainer.addChild(scoreText);
+        game.addChild(gameOverScoreContainer);
+
+        playAgainButton = new createjs.Bitmap("assets/images/playAgainButton.png");
+        playAgainButton.x = 198;
+        playAgainButton.y = 300;
+        game.addChild(playAgainButton);
+        playAgainButton.addEventListener("click", playAgain);
+        playAgainButton.addEventListener("mouseover", playAgainButtonOver);
+        playAgainButton.addEventListener("mouseout", playAgainButtonOut);
 
     }
+}
+
+function playAgain() {
+
+    game.removeChild(gameOverPage);
+    game.removeChild(gameOverScoreContainer);
+    game.removeChild(playAgainButton);
+    for (var card = 0; card < 5; card++) {
+        game.removeChild(cardsL1[card]);
+    }
+    for (var card = 0; card < 5; card++) {
+        game.removeChild(cardsL2[card]);
+    }
+
+    for (var card = 0; card < 5; card++) {
+        game.removeChild(cardbacksL1[card]);
+    }
+    for (var card = 0; card < 5; card++) {
+        game.removeChild(cardbacksL2[card]);
+    }
+
+    game.removeChild(background);
+    game.removeChild(lifeContainer);
+    game.removeChild(scoreContainer);
+    unveiledTinyWhelps = 0;
+    unveiledIncessantZombies = 0;
+    unveiledFerociousTalons = 0;
+    unveiledDeepwoodWitches = 0;
+    unveiledStormboundGargoyles = 0;
+    createUI();
+
+    /*BoardState();
+    LoadCards();
+
+
+    //Displays the player's score
+    scoreContainer.x = 600;
+    scoreContainer.y = 454;
+    scoreText.text = "" + score;
+    scoreContainer.addChild(scoreText);
+    game.addChild(scoreContainer);
+
+    //Displays the player's life total
+    lifeContainer.x = 200;
+    lifeContainer.y = 454;
+    lifeText.text = "" + life;
+    lifeContainer.addChild(lifeText);
+    game.addChild(lifeContainer);
+    */
 }
 
 /* Utility function to check if a value falls within a range of bounds */
@@ -1861,14 +1793,18 @@ function createUI(): void {
 
 
     //Displays the player's score
+    score = 0;
     scoreContainer.x = 600;
     scoreContainer.y = 454;
+    scoreText.text = "" + score;
     scoreContainer.addChild(scoreText);
     game.addChild(scoreContainer);
 
     //Displays the player's life total
+    life = 30;
     lifeContainer.x = 200;
     lifeContainer.y = 454;
+    lifeText.text = "" + life;
     lifeContainer.addChild(lifeText);
     game.addChild(lifeContainer);
 
