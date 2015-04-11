@@ -30,11 +30,11 @@ var DeepwoodWitchImage = new createjs.Bitmap("assets/images/DeepwoodWitchCard.pn
 var StormboundGargoyleImage = new createjs.Bitmap("assets/images/StormboundGargoyleCard.png");
 
 /* Tally Variables */
-var tinyWhelp = 0;
-var incessantZombie = 0;
-var ferociousTalon = 0;
-var deepwoodWitch = 0;
-var stormboundGargoyle = 0;
+var unveiledTinyWhelps = 0;
+var unveiledIncessantZombies = 0;
+var unveiledFerociousTalons = 0;
+var unveiledDeepwoodWitches = 0;
+var unveiledStormboundGargoyles = 0;
 
 //Containers
 var cardContainers: createjs.Container[] = [];
@@ -132,25 +132,25 @@ function LoadCards() {
 
 function flipCardOneL1() {
     game.removeChild(cardbacksL1[0]);
-    switch (cardsL1[0]) {
-        case cardsL1[0] = tinyWhelpImage:
-            tinyWhelp++;
+    switch (storedCardsL1[0]) {
+        case storedCardsL1[0] = 1:
+            unveiledTinyWhelps += 1;
             unveiledCardsL1[0] = 1;
             break;
-        case cardsL1[0] = incessantZombieImage:
-            incessantZombie++;
+        case storedCardsL1[0] = 2:
+            unveiledIncessantZombies += 1;
             unveiledCardsL1[0] = 2;
             break;
-        case cardsL1[0] = ferociousTalonImage:
-            ferociousTalon++;
+        case storedCardsL1[0] = 3:
+            unveiledFerociousTalons += 1;
             unveiledCardsL1[0] = 3;
             break;
-        case cardsL1[0] = DeepwoodWitchImage:
-            deepwoodWitch++;
+        case storedCardsL1[0] = 4:
+            unveiledDeepwoodWitches += 1;
             unveiledCardsL1[0] = 4;
             break;
-        case cardsL1[0] = StormboundGargoyleImage:
-            stormboundGargoyle++;
+        case storedCardsL1[0] = 5:
+            unveiledStormboundGargoyles += 1;
             unveiledCardsL1[0] = 5;
             break;
     }
@@ -160,256 +160,296 @@ function flipCardOneL1() {
 
 function flipCardTwoL1() {
     game.removeChild(cardbacksL1[1]);
-    switch (cardsL1[1]) {
-        case cardsL1[1] = tinyWhelpImage:
+    switch (storedCardsL1[1]) {
+        case storedCardsL1[1] = 1:
+            unveiledTinyWhelps += 1;
             unveiledCardsL1[1] = 1;
             break;
-        case cardsL1[1] = incessantZombieImage:
+        case storedCardsL1[1] = 2:
+            unveiledIncessantZombies += 1;
             unveiledCardsL1[1] = 2;
             break;
-        case cardsL1[1] = ferociousTalonImage:
+        case storedCardsL1[1] = 3:
+            unveiledFerociousTalons += 1;
             unveiledCardsL1[1] = 3;
             break;
-        case cardsL1[1] = DeepwoodWitchImage:
+        case storedCardsL1[1] = 4:
+            unveiledDeepwoodWitches += 1;
             unveiledCardsL1[1] = 4;
             break;
-        case cardsL1[1] = StormboundGargoyleImage:
+        case storedCardsL1[1] = 5:
+            unveiledStormboundGargoyles += 1;
             unveiledCardsL1[1] = 5;
             break;
     }
+    console.log("Card 2 is a " + unveiledCardsL1[1]);
 }
 
 
 function flipCardThreeL1() {
     game.removeChild(cardbacksL1[2]);
-    switch (cardsL1[2]) {
-        case cardsL1[2] = tinyWhelpImage:
+    switch (storedCardsL1[2]) {
+        case storedCardsL1[2] = 1:
+            unveiledTinyWhelps += 1;
             unveiledCardsL1[2] = 1;
             break;
-        case cardsL1[2] = incessantZombieImage:
+        case storedCardsL1[2] = 2:
+            unveiledIncessantZombies += 1;
             unveiledCardsL1[2] = 2;
             break;
-        case cardsL1[2] = ferociousTalonImage:
+        case storedCardsL1[2] = 3:
+            unveiledFerociousTalons += 1;
             unveiledCardsL1[2] = 3;
             break;
-        case cardsL1[2] = DeepwoodWitchImage:
+        case storedCardsL1[2] = 4:
+            unveiledDeepwoodWitches += 1;
             unveiledCardsL1[2] = 4;
             break;
-        case cardsL1[2] = StormboundGargoyleImage:
+        case storedCardsL1[2] = 5:
+            unveiledStormboundGargoyles += 1;
             unveiledCardsL1[2] = 5;
             break;
     }
+    console.log("Card 3 is a " + unveiledCardsL1[2]);
 }
+
 function flipCardFourL1() {
     game.removeChild(cardbacksL1[3]);
-    switch (cardsL1[3]) {
-        case cardsL1[3] = tinyWhelpImage:
+    switch (storedCardsL1[3]) {
+        case storedCardsL1[3] = 1:
+            unveiledTinyWhelps += 1;
             unveiledCardsL1[3] = 1;
             break;
-        case cardsL1[3] = incessantZombieImage:
+        case storedCardsL1[3] = 2:
+            unveiledIncessantZombies += 1;
             unveiledCardsL1[3] = 2;
             break;
-        case cardsL1[3] = ferociousTalonImage:
+        case storedCardsL1[3] = 3:
+            unveiledFerociousTalons += 1;
             unveiledCardsL1[3] = 3;
             break;
-        case cardsL1[3] = DeepwoodWitchImage:
+        case storedCardsL1[3] = 4:
+            unveiledDeepwoodWitches += 1;
             unveiledCardsL1[3] = 4;
             break;
-        case cardsL1[3] = StormboundGargoyleImage:
-            unveiledCardsL1[3] = 4;
+        case storedCardsL1[3] = 5:
+            unveiledStormboundGargoyles += 1;
+            unveiledCardsL1[3] = 5;
             break;
     }
+    console.log("Card 4 is a " + unveiledCardsL1[3]);
 }
 
 function flipCardFiveL1() {
     game.removeChild(cardbacksL1[4]);
-    switch (cardsL1[4]) {
-        case cardsL1[4] = tinyWhelpImage:
+    switch (storedCardsL1[4]) {
+        case storedCardsL1[4] = 1:
+            unveiledTinyWhelps += 1;
             unveiledCardsL1[4] = 1;
             break;
-        case cardsL1[4] = incessantZombieImage:
+        case storedCardsL1[4] = 2:
+            unveiledIncessantZombies += 1;
             unveiledCardsL1[4] = 2;
             break;
-        case cardsL1[4] = ferociousTalonImage:
+        case storedCardsL1[4] = 3:
+            unveiledFerociousTalons += 1;
             unveiledCardsL1[4] = 3;
             break;
-        case cardsL1[4] = DeepwoodWitchImage:
+        case storedCardsL1[4] = 4:
+            unveiledDeepwoodWitches += 1;
             unveiledCardsL1[4] = 4;
             break;
-        case cardsL1[4] = StormboundGargoyleImage:
+        case storedCardsL1[4] = 5:
+            unveiledStormboundGargoyles += 1;
             unveiledCardsL1[4] = 5;
             break;
     }
+    console.log("Card 5 is a " + unveiledCardsL1[4]);
 }
 
 function flipCardOneL2() {
     game.removeChild(cardbacksL2[0]);
-    switch (cardsL2[0]) {
-        case cardsL2[0] = tinyWhelpImage:
-            tinyWhelp++;
+    switch (storedCardsL2[0]) {
+        case storedCardsL2[0] = 1:
+            unveiledTinyWhelps += 1;
             unveiledCardsL2[0] = 1;
             break;
-        case cardsL2[0] = incessantZombieImage:
-            incessantZombie++;
+        case storedCardsL2[0] = 2:
+            unveiledIncessantZombies += 1;
             unveiledCardsL2[0] = 2;
             break;
-        case cardsL2[0] = ferociousTalonImage:
-            ferociousTalon++;
+        case storedCardsL2[0] = 3:
+            unveiledFerociousTalons += 1;
             unveiledCardsL2[0] = 3;
             break;
-        case cardsL2[0] = DeepwoodWitchImage:
-            deepwoodWitch++;
+        case storedCardsL2[0] = 4:
+            unveiledDeepwoodWitches += 1;
             unveiledCardsL2[0] = 4;
             break;
-        case cardsL2[0] = StormboundGargoyleImage:
-            stormboundGargoyle++;
+        case storedCardsL2[0] = 5:
+            unveiledStormboundGargoyles += 1;
             unveiledCardsL2[0] = 5;
             break;
     }
-    checkMatchOneL2();
+    console.log("Card 6 is a " + unveiledCardsL2[0]);
 }
 
 function flipCardTwoL2() {
     game.removeChild(cardbacksL2[1]);
-    switch (cardsL2[1]) {
-        case cardsL2[1] = tinyWhelpImage:
-            tinyWhelp++;
+    switch (storedCardsL2[1]) {
+        case storedCardsL2[1] = 1:
+            unveiledTinyWhelps += 1;
             unveiledCardsL2[1] = 1;
             break;
-        case cardsL2[1] = incessantZombieImage:
-            incessantZombie++;
+        case storedCardsL2[1] = 2:
+            unveiledIncessantZombies += 1;
             unveiledCardsL2[1] = 2;
             break;
-        case cardsL2[1] = ferociousTalonImage:
-            ferociousTalon++;
+        case storedCardsL2[1] = 3:
+            unveiledFerociousTalons += 1;
             unveiledCardsL2[1] = 3;
             break;
-        case cardsL2[1] = DeepwoodWitchImage:
-            deepwoodWitch++;
+        case storedCardsL2[1] = 4:
+            unveiledDeepwoodWitches += 1;
             unveiledCardsL2[1] = 4;
             break;
-        case cardsL2[1] = StormboundGargoyleImage:
-            stormboundGargoyle++;
+        case storedCardsL2[1] = 5:
+            unveiledStormboundGargoyles += 1;
             unveiledCardsL2[1] = 5;
             break;
     }
-    checkMatchTwoL2();
+    console.log("Card 7 is a " + unveiledCardsL2[1]);
 }
 
 function flipCardThreeL2() {
     game.removeChild(cardbacksL2[2]);
-    switch (cardsL2[2]) {
-        case cardsL2[2] = tinyWhelpImage:
-            tinyWhelp++;
+    switch (storedCardsL2[2]) {
+        case storedCardsL2[2] = 1:
+            unveiledTinyWhelps += 1;
             unveiledCardsL2[2] = 1;
             break;
-        case cardsL2[2] = incessantZombieImage:
-            incessantZombie++;
+        case storedCardsL2[2] = 2:
+            unveiledIncessantZombies += 1;
             unveiledCardsL2[2] = 2;
             break;
-        case cardsL2[2] = ferociousTalonImage:
-            ferociousTalon++;
+        case storedCardsL2[2] = 3:
+            unveiledFerociousTalons += 1;
             unveiledCardsL2[2] = 3;
             break;
-        case cardsL2[2] = DeepwoodWitchImage:
-            deepwoodWitch++;
+        case storedCardsL2[2] = 4:
+            unveiledDeepwoodWitches += 1;
             unveiledCardsL2[2] = 4;
             break;
-        case cardsL2[2] = StormboundGargoyleImage:
-            stormboundGargoyle++;
+        case storedCardsL2[2] = 5:
+            unveiledStormboundGargoyles += 1;
             unveiledCardsL2[2] = 5;
             break;
     }
-    checkMatchThreeL2();
+    console.log("Card 8 is a " + unveiledCardsL2[2]);
 }
 
 function flipCardFourL2() {
     game.removeChild(cardbacksL2[3]);
-    switch (cardsL2[3]) {
-        case cardsL2[3] = tinyWhelpImage:
-            tinyWhelp++;
+    switch (storedCardsL2[3]) {
+        case storedCardsL2[3] = 1:
+            unveiledTinyWhelps += 1;
             unveiledCardsL2[3] = 1;
             break;
-        case cardsL2[3] = incessantZombieImage:
-            incessantZombie++;
+        case storedCardsL2[3] = 2:
+            unveiledIncessantZombies += 1;
             unveiledCardsL2[3] = 2;
             break;
-        case cardsL2[3] = ferociousTalonImage:
-            ferociousTalon++;
+        case storedCardsL2[3] = 3:
+            unveiledFerociousTalons += 1;
             unveiledCardsL2[3] = 3;
             break;
-        case cardsL2[3] = DeepwoodWitchImage:
-            deepwoodWitch++;
+        case storedCardsL2[3] = 4:
+            unveiledDeepwoodWitches += 1;
             unveiledCardsL2[3] = 4;
             break;
-        case cardsL2[3] = StormboundGargoyleImage:
-            stormboundGargoyle++;
+        case storedCardsL2[3] = 5:
+            unveiledStormboundGargoyles += 1;
             unveiledCardsL2[3] = 5;
             break;
     }
-    checkMatchFourL2();
+    console.log("Card 9 is a " + unveiledCardsL2[3]);
 }
 
 
 function flipCardFiveL2() {
     game.removeChild(cardbacksL2[4]);
-    switch (cardsL2[4]) {
-        case cardsL2[4] = tinyWhelpImage:
-            tinyWhelp++;
+    switch (storedCardsL2[4]) {
+        case storedCardsL2[4] = 1:
+            unveiledTinyWhelps += 1;
             unveiledCardsL2[4] = 1;
             break;
-        case cardsL2[4] = incessantZombieImage:
-            incessantZombie++;
+        case storedCardsL2[4] = 2:
+            unveiledIncessantZombies += 1;
             unveiledCardsL2[4] = 2;
             break;
-        case cardsL2[4] = ferociousTalonImage:
-            ferociousTalon++;
+        case storedCardsL2[4] = 3:
+            unveiledFerociousTalons += 1;
             unveiledCardsL2[4] = 3;
             break;
-        case cardsL2[4] = DeepwoodWitchImage:
-            deepwoodWitch++;
-            unveiledCardsL2[4] =4;
+        case storedCardsL2[4] = 4:
+            unveiledDeepwoodWitches += 1;
+            unveiledCardsL2[4] = 4;
             break;
-        case cardsL2[4] = StormboundGargoyleImage:
-            stormboundGargoyle++;
+        case storedCardsL2[4] = 5:
+            unveiledStormboundGargoyles += 1;
             unveiledCardsL2[4] = 5;
             break;
     }
-    checkMatchFiveL2();
+    console.log("Card 10 is a " + unveiledCardsL2[4]);
 }
 
 
 function checkMatchOneL1() {
-
     if (unveiledCardsL1[0] == unveiledCardsL1[1] || unveiledCardsL1[0] == unveiledCardsL1[2] || unveiledCardsL1[0] == unveiledCardsL1[3]
         || unveiledCardsL1[0] == unveiledCardsL1[4] || unveiledCardsL1[0] == unveiledCardsL2[0] || unveiledCardsL1[0] == unveiledCardsL2[1]
-        || unveiledCardsL1[0] == unveiledCardsL2[1] || unveiledCardsL1[0] == unveiledCardsL2[2] || unveiledCardsL1[0] == unveiledCardsL2[3]
-        || unveiledCardsL1[0] == unveiledCardsL2[4]) {
+        || unveiledCardsL1[0] == unveiledCardsL2[2] || unveiledCardsL1[0] == unveiledCardsL2[3] || unveiledCardsL1[0] == unveiledCardsL2[4])
+        {
 
         switch (unveiledCardsL1[0]) {
             case unveiledCardsL1[0] = 1:
-                score += (tinyWhelp * 100);
+                if (unveiledTinyWhelps >= 2) {
+                    score += unveiledTinyWhelps * 100;
+                }
+                console.log("# of whelps: " + unveiledTinyWhelps);
                 console.log("score: " + score);
                 break;
             case unveiledCardsL1[0] = 2:
-                score += (incessantZombie * 100);
+                if (unveiledIncessantZombies >= 2) {
+                    score += (unveiledIncessantZombies * 2) * 100;
+                }
+                console.log("# of zombies: " + unveiledIncessantZombies);
                 console.log("score: " + score);
                 break;
             case unveiledCardsL1[0] = 3:
-                score += (ferociousTalon * 100);
+                if (unveiledFerociousTalons >= 2) {
+                    score += (unveiledFerociousTalons * 3) * 100;
+                }
+                console.log("# of talons: " + unveiledFerociousTalons);
                 console.log("score: " + score);
                 break;
             case unveiledCardsL1[0] = 4:
-                score += (deepwoodWitch * 100);
+                if (unveiledDeepwoodWitches >= 2) {
+                    score += (unveiledDeepwoodWitches * 4) * 100;
+                }
+                console.log("# of witches: " + unveiledDeepwoodWitches);
                 console.log("score: " + score);
                 break;
             case unveiledCardsL1[0] = 5:
-                score += (stormboundGargoyle * 100);
+                if (unveiledStormboundGargoyles >= 2) {
+                    score += (unveiledStormboundGargoyles * 5) * 100;
+                }
+                console.log("# of gargoyles: " + unveiledStormboundGargoyles);
                 console.log("score: " + score);
                 break;
-  }
-    } 
+        }
+    }
 }
+
 
 function checkMatchTwoL1() {
     
@@ -467,23 +507,18 @@ function BoardState() {
         switch (outCome[randomCard]) {
             case checkRange(outCome[randomCard], 1, 27):  // 41.5% probability
                 firstLine[randomCard] = "tinyWhelpCard";
-                tinyWhelp++;
                 break;
             case checkRange(outCome[randomCard], 28, 37): // 15.4% probability
                 firstLine[randomCard] = "IncessantZombieCard";
-                incessantZombie++;
                 break;
             case checkRange(outCome[randomCard], 38, 46): // 13.8% probability
                 firstLine[randomCard] = "FerociousTalonCard";
-                ferociousTalon++;
                 break;
             case checkRange(outCome[randomCard], 47, 54): // 12.3% probability
                 firstLine[randomCard] = "DeepwoodWitchCard";
-                deepwoodWitch++;
                 break;
             case checkRange(outCome[randomCard], 55, 65): //  7.7% probability
                 firstLine[randomCard] = "StormboundGargoyleCard";
-                stormboundGargoyle++;
                 break;
         }
     }
