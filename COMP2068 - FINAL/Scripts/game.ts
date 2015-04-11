@@ -183,6 +183,7 @@ function flipCardTwoL1() {
             break;
     }
     console.log("Card 2 is a " + unveiledCardsL1[1]);
+    checkMatchTwoL1();
 }
 
 
@@ -211,6 +212,7 @@ function flipCardThreeL1() {
             break;
     }
     console.log("Card 3 is a " + unveiledCardsL1[2]);
+    checkMatchThreeL1();
 }
 
 function flipCardFourL1() {
@@ -238,6 +240,7 @@ function flipCardFourL1() {
             break;
     }
     console.log("Card 4 is a " + unveiledCardsL1[3]);
+    checkMatchFourL1();
 }
 
 function flipCardFiveL1() {
@@ -265,6 +268,7 @@ function flipCardFiveL1() {
             break;
     }
     console.log("Card 5 is a " + unveiledCardsL1[4]);
+    checkMatchFiveL1();
 }
 
 function flipCardOneL2() {
@@ -292,6 +296,7 @@ function flipCardOneL2() {
             break;
     }
     console.log("Card 6 is a " + unveiledCardsL2[0]);
+    checkMatchOneL2();
 }
 
 function flipCardTwoL2() {
@@ -319,6 +324,7 @@ function flipCardTwoL2() {
             break;
     }
     console.log("Card 7 is a " + unveiledCardsL2[1]);
+    checkMatchTwoL2();
 }
 
 function flipCardThreeL2() {
@@ -346,6 +352,7 @@ function flipCardThreeL2() {
             break;
     }
     console.log("Card 8 is a " + unveiledCardsL2[2]);
+    checkMatchThreeL2();
 }
 
 function flipCardFourL2() {
@@ -373,6 +380,7 @@ function flipCardFourL2() {
             break;
     }
     console.log("Card 9 is a " + unveiledCardsL2[3]);
+    checkMatchFourL2();
 }
 
 
@@ -401,14 +409,13 @@ function flipCardFiveL2() {
             break;
     }
     console.log("Card 10 is a " + unveiledCardsL2[4]);
+    checkMatchFiveL2();
 }
 
 
 function checkMatchOneL1() {
     if (unveiledCardsL1[0] == unveiledCardsL1[1] || unveiledCardsL1[0] == unveiledCardsL1[2] || unveiledCardsL1[0] == unveiledCardsL1[3]
-        || unveiledCardsL1[0] == unveiledCardsL1[4] || unveiledCardsL1[0] == unveiledCardsL2[0] || unveiledCardsL1[0] == unveiledCardsL2[1]
-        || unveiledCardsL1[0] == unveiledCardsL2[2] || unveiledCardsL1[0] == unveiledCardsL2[3] || unveiledCardsL1[0] == unveiledCardsL2[4])
-        {
+        || unveiledCardsL1[0] == unveiledCardsL1[4]) {
 
         switch (unveiledCardsL1[0]) {
             case unveiledCardsL1[0] = 1:
@@ -417,6 +424,7 @@ function checkMatchOneL1() {
                 }
                 console.log("# of whelps: " + unveiledTinyWhelps);
                 console.log("score: " + score);
+                scoreText.text = "" + score;
                 break;
             case unveiledCardsL1[0] = 2:
                 if (unveiledIncessantZombies >= 2) {
@@ -424,6 +432,7 @@ function checkMatchOneL1() {
                 }
                 console.log("# of zombies: " + unveiledIncessantZombies);
                 console.log("score: " + score);
+                scoreText.text = "" + score;
                 break;
             case unveiledCardsL1[0] = 3:
                 if (unveiledFerociousTalons >= 2) {
@@ -431,6 +440,7 @@ function checkMatchOneL1() {
                 }
                 console.log("# of talons: " + unveiledFerociousTalons);
                 console.log("score: " + score);
+                scoreText.text = "" + score;
                 break;
             case unveiledCardsL1[0] = 4:
                 if (unveiledDeepwoodWitches >= 2) {
@@ -438,6 +448,7 @@ function checkMatchOneL1() {
                 }
                 console.log("# of witches: " + unveiledDeepwoodWitches);
                 console.log("score: " + score);
+                scoreText.text = "" + score;
                 break;
             case unveiledCardsL1[0] = 5:
                 if (unveiledStormboundGargoyles >= 2) {
@@ -445,46 +456,1270 @@ function checkMatchOneL1() {
                 }
                 console.log("# of gargoyles: " + unveiledStormboundGargoyles);
                 console.log("score: " + score);
+                scoreText.text = "" + score;
                 break;
+        }
+    } else if (unveiledCardsL1[0] == unveiledCardsL2[0] || unveiledCardsL1[0] == unveiledCardsL2[1] || unveiledCardsL1[0] == unveiledCardsL2[2]
+        || unveiledCardsL1[0] == unveiledCardsL2[3] || unveiledCardsL1[0] == unveiledCardsL2[4]) {
+        switch (unveiledCardsL1[0]) {
+            case unveiledCardsL1[0] = 1:
+                if (unveiledTinyWhelps >= 2) {
+                    score += unveiledTinyWhelps * 100;
+                }
+                console.log("# of whelps: " + unveiledTinyWhelps);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[0] = 2:
+                if (unveiledIncessantZombies >= 2) {
+                    score += (unveiledIncessantZombies * 2) * 100;
+                }
+                console.log("# of zombies: " + unveiledIncessantZombies);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[0] = 3:
+                if (unveiledFerociousTalons >= 2) {
+                    score += (unveiledFerociousTalons * 3) * 100;
+                }
+                console.log("# of talons: " + unveiledFerociousTalons);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[0] = 4:
+                if (unveiledDeepwoodWitches >= 2) {
+                    score += (unveiledDeepwoodWitches * 4) * 100;
+                }
+                console.log("# of witches: " + unveiledDeepwoodWitches);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[0] = 5:
+                if (unveiledStormboundGargoyles >= 2) {
+                    score += (unveiledStormboundGargoyles * 5) * 100;
+                }
+                console.log("# of gargoyles: " + unveiledStormboundGargoyles);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+        }
+    } else if (unveiledCardsL1[0] != unveiledCardsL1[1] || unveiledCardsL1[0] != unveiledCardsL1[2] || unveiledCardsL1[0] != unveiledCardsL1[3]
+        || unveiledCardsL1[0] != unveiledCardsL1[4]) {
+        switch (unveiledCardsL1[0]){
+            case unveiledCardsL1[0] = 1:
+                    life -= unveiledTinyWhelps;
+                    lifeText.text = "" + life;
+            case unveiledCardsL1[0] = 2:
+                life -= unveiledIncessantZombies * 2;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[0] = 3:
+                life -= unveiledFerociousTalons * 3;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[0] = 4:
+                life -= unveiledDeepwoodWitches * 4;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[0] = 5:
+                life -= unveiledStormboundGargoyles * 5;
+                lifeText.text = "" + life;
+        }
+    } else if (unveiledCardsL1[0] != unveiledCardsL2[0] || unveiledCardsL1[0] != unveiledCardsL2[1] || unveiledCardsL1[0] != unveiledCardsL2[2]
+        || unveiledCardsL1[0] != unveiledCardsL2[3] || unveiledCardsL1[0] != unveiledCardsL2[4]) {
+        switch (unveiledCardsL1[0]) {
+            case unveiledCardsL1[0] = 1:
+                life -= unveiledTinyWhelps;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[0] = 2:
+                life -= unveiledIncessantZombies * 2;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[0] = 3:
+                life -= unveiledFerociousTalons * 3;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[0] = 4:
+                life -= unveiledDeepwoodWitches * 4;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[0] = 5:
+                life -= unveiledStormboundGargoyles * 5;
+                lifeText.text = "" + life;
         }
     }
 }
 
-
 function checkMatchTwoL1() {
-    
+    if (unveiledCardsL1[1] == unveiledCardsL1[0] || unveiledCardsL1[1] == unveiledCardsL1[2] || unveiledCardsL1[1] == unveiledCardsL1[3]
+        || unveiledCardsL1[1] == unveiledCardsL1[4]) {
+
+        switch (unveiledCardsL1[1]) {
+            case unveiledCardsL1[1] = 1:
+                if (unveiledTinyWhelps >= 2) {
+                    score += unveiledTinyWhelps * 100;
+                }
+                console.log("# of whelps: " + unveiledTinyWhelps);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[1] = 2:
+                if (unveiledIncessantZombies >= 2) {
+                    score += (unveiledIncessantZombies * 2) * 100;
+                }
+                console.log("# of zombies: " + unveiledIncessantZombies);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[1] = 3:
+                if (unveiledFerociousTalons >= 2) {
+                    score += (unveiledFerociousTalons * 3) * 100;
+                }
+                console.log("# of talons: " + unveiledFerociousTalons);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[1] = 4:
+                if (unveiledDeepwoodWitches >= 2) {
+                    score += (unveiledDeepwoodWitches * 4) * 100;
+                }
+                console.log("# of witches: " + unveiledDeepwoodWitches);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[1] = 5:
+                if (unveiledStormboundGargoyles >= 2) {
+                    score += (unveiledStormboundGargoyles * 5) * 100;
+                }
+                console.log("# of gargoyles: " + unveiledStormboundGargoyles);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+        }
+    } else if (unveiledCardsL1[1] == unveiledCardsL2[0] || unveiledCardsL1[1] == unveiledCardsL2[1] || unveiledCardsL1[1] == unveiledCardsL2[2]
+        || unveiledCardsL1[1] == unveiledCardsL2[3] || unveiledCardsL1[1] == unveiledCardsL2[4]) {
+        switch (unveiledCardsL1[1]) {
+            case unveiledCardsL1[1] = 1:
+                if (unveiledTinyWhelps >= 2) {
+                    score += unveiledTinyWhelps * 100;
+                }
+                console.log("# of whelps: " + unveiledTinyWhelps);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[1] = 2:
+                if (unveiledIncessantZombies >= 2) {
+                    score += (unveiledIncessantZombies * 2) * 100;
+                }
+                console.log("# of zombies: " + unveiledIncessantZombies);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[1] = 3:
+                if (unveiledFerociousTalons >= 2) {
+                    score += (unveiledFerociousTalons * 3) * 100;
+                }
+                console.log("# of talons: " + unveiledFerociousTalons);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[1] = 4:
+                if (unveiledDeepwoodWitches >= 2) {
+                    score += (unveiledDeepwoodWitches * 4) * 100;
+                }
+                console.log("# of witches: " + unveiledDeepwoodWitches);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[1] = 5:
+                if (unveiledStormboundGargoyles >= 2) {
+                    score += (unveiledStormboundGargoyles * 5) * 100;
+                }
+                console.log("# of gargoyles: " + unveiledStormboundGargoyles);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+        }
+    } else if (unveiledCardsL1[1] != unveiledCardsL1[0] || unveiledCardsL1[1] != unveiledCardsL1[2] || unveiledCardsL1[1] != unveiledCardsL1[3]
+        || unveiledCardsL1[1] != unveiledCardsL1[4]) {
+        switch (unveiledCardsL1[1]) {
+            case unveiledCardsL1[1] = 1:
+                life -= unveiledTinyWhelps;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[1] = 2:
+                life -= unveiledIncessantZombies * 2;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[1] = 3:
+                life -= unveiledFerociousTalons * 3;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[1] = 4:
+                life -= unveiledDeepwoodWitches * 4;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[1] = 5:
+                life -= unveiledStormboundGargoyles * 5;
+                lifeText.text = "" + life;
+        }
+    } else if (unveiledCardsL1[1] != unveiledCardsL2[0] || unveiledCardsL1[1] != unveiledCardsL2[1] || unveiledCardsL1[1] != unveiledCardsL2[2]
+        || unveiledCardsL1[1] != unveiledCardsL2[3] || unveiledCardsL1[1] != unveiledCardsL2[4]) {
+        switch (unveiledCardsL1[1]) {
+            case unveiledCardsL1[1] = 1:
+                life -= unveiledTinyWhelps;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[1] = 2:
+                life -= unveiledIncessantZombies * 2;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[1] = 3:
+                life -= unveiledFerociousTalons * 3;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[1] = 4:
+                life -= unveiledDeepwoodWitches * 4;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[1] = 5:
+                life -= unveiledStormboundGargoyles * 5;
+                lifeText.text = "" + life;
+        }
+    }
 }
 
 function checkMatchThreeL1() {
+    if (unveiledCardsL1[2] == unveiledCardsL1[1] || unveiledCardsL1[2] == unveiledCardsL1[0] || unveiledCardsL1[2] == unveiledCardsL1[3]
+        || unveiledCardsL1[2] == unveiledCardsL1[4]) {
 
+        switch (unveiledCardsL1[2]) {
+            case unveiledCardsL1[2] = 1:
+                if (unveiledTinyWhelps >= 2) {
+                    score += unveiledTinyWhelps * 100;
+                }
+                console.log("# of whelps: " + unveiledTinyWhelps);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[2] = 2:
+                if (unveiledIncessantZombies >= 2) {
+                    score += (unveiledIncessantZombies * 2) * 100;
+                }
+                console.log("# of zombies: " + unveiledIncessantZombies);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[2] = 3:
+                if (unveiledFerociousTalons >= 2) {
+                    score += (unveiledFerociousTalons * 3) * 100;
+                }
+                console.log("# of talons: " + unveiledFerociousTalons);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[2] = 4:
+                if (unveiledDeepwoodWitches >= 2) {
+                    score += (unveiledDeepwoodWitches * 4) * 100;
+                }
+                console.log("# of witches: " + unveiledDeepwoodWitches);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[2] = 5:
+                if (unveiledStormboundGargoyles >= 2) {
+                    score += (unveiledStormboundGargoyles * 5) * 100;
+                }
+                console.log("# of gargoyles: " + unveiledStormboundGargoyles);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+        }
+    } else if (unveiledCardsL1[2] == unveiledCardsL2[0] || unveiledCardsL1[2] == unveiledCardsL2[1] || unveiledCardsL1[2] == unveiledCardsL2[2]
+        || unveiledCardsL1[2] == unveiledCardsL2[3] || unveiledCardsL1[2] == unveiledCardsL2[4]) {
+        switch (unveiledCardsL1[2]) {
+            case unveiledCardsL1[2] = 1:
+                if (unveiledTinyWhelps >= 2) {
+                    score += unveiledTinyWhelps * 100;
+                }
+                console.log("# of whelps: " + unveiledTinyWhelps);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[2] = 2:
+                if (unveiledIncessantZombies >= 2) {
+                    score += (unveiledIncessantZombies * 2) * 100;
+                }
+                console.log("# of zombies: " + unveiledIncessantZombies);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[2] = 3:
+                if (unveiledFerociousTalons >= 2) {
+                    score += (unveiledFerociousTalons * 3) * 100;
+                }
+                console.log("# of talons: " + unveiledFerociousTalons);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[2] = 4:
+                if (unveiledDeepwoodWitches >= 2) {
+                    score += (unveiledDeepwoodWitches * 4) * 100;
+                }
+                console.log("# of witches: " + unveiledDeepwoodWitches);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[2] = 5:
+                if (unveiledStormboundGargoyles >= 2) {
+                    score += (unveiledStormboundGargoyles * 5) * 100;
+                }
+                console.log("# of gargoyles: " + unveiledStormboundGargoyles);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+        }
+    } else if (unveiledCardsL1[2] != unveiledCardsL1[1] || unveiledCardsL1[2] != unveiledCardsL1[0] || unveiledCardsL1[2] != unveiledCardsL1[3]
+        || unveiledCardsL1[2] != unveiledCardsL1[4]) {
+        switch (unveiledCardsL1[2]) {
+            case unveiledCardsL1[2] = 1:
+                life -= unveiledTinyWhelps;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[2] = 2:
+                life -= unveiledIncessantZombies * 2;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[2] = 3:
+                life -= unveiledFerociousTalons * 3;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[2] = 4:
+                life -= unveiledDeepwoodWitches * 4;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[2] = 5:
+                life -= unveiledStormboundGargoyles * 5;
+                lifeText.text = "" + life;
+        }
+    } else if (unveiledCardsL1[2] != unveiledCardsL2[0] || unveiledCardsL1[2] != unveiledCardsL2[1] || unveiledCardsL1[2] != unveiledCardsL2[2]
+        || unveiledCardsL1[2] != unveiledCardsL2[3] || unveiledCardsL1[2] != unveiledCardsL2[4]) {
+        switch (unveiledCardsL1[2]) {
+            case unveiledCardsL1[2] = 1:
+                life -= unveiledTinyWhelps;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[2] = 2:
+                life -= unveiledIncessantZombies * 2;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[2] = 3:
+                life -= unveiledFerociousTalons * 3;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[2] = 4:
+                life -= unveiledDeepwoodWitches * 4;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[2] = 5:
+                life -= unveiledStormboundGargoyles * 5;
+                lifeText.text = "" + life;
+        }
+    }
 }
-
 function checkMatchFourL1() {
+    if (unveiledCardsL1[3] == unveiledCardsL1[1] || unveiledCardsL1[3] == unveiledCardsL1[2] || unveiledCardsL1[3] == unveiledCardsL1[0]
+        || unveiledCardsL1[3] == unveiledCardsL1[4]) {
 
+        switch (unveiledCardsL1[3]) {
+            case unveiledCardsL1[3] = 1:
+                if (unveiledTinyWhelps >= 2) {
+                    score += unveiledTinyWhelps * 100;
+                }
+                console.log("# of whelps: " + unveiledTinyWhelps);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[3] = 2:
+                if (unveiledIncessantZombies >= 2) {
+                    score += (unveiledIncessantZombies * 2) * 100;
+                }
+                console.log("# of zombies: " + unveiledIncessantZombies);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[3] = 3:
+                if (unveiledFerociousTalons >= 2) {
+                    score += (unveiledFerociousTalons * 3) * 100;
+                }
+                console.log("# of talons: " + unveiledFerociousTalons);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[3] = 4:
+                if (unveiledDeepwoodWitches >= 2) {
+                    score += (unveiledDeepwoodWitches * 4) * 100;
+                }
+                console.log("# of witches: " + unveiledDeepwoodWitches);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[3] = 5:
+                if (unveiledStormboundGargoyles >= 2) {
+                    score += (unveiledStormboundGargoyles * 5) * 100;
+                }
+                console.log("# of gargoyles: " + unveiledStormboundGargoyles);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+        }
+    } else if (unveiledCardsL1[3] == unveiledCardsL2[0] || unveiledCardsL1[3] == unveiledCardsL2[1] || unveiledCardsL1[3] == unveiledCardsL2[2]
+        || unveiledCardsL1[3] == unveiledCardsL2[3] || unveiledCardsL1[3] == unveiledCardsL2[4]) {
+        switch (unveiledCardsL1[3]) {
+            case unveiledCardsL1[3] = 1:
+                if (unveiledTinyWhelps >= 2) {
+                    score += unveiledTinyWhelps * 100;
+                }
+                console.log("# of whelps: " + unveiledTinyWhelps);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[3] = 2:
+                if (unveiledIncessantZombies >= 2) {
+                    score += (unveiledIncessantZombies * 2) * 100;
+                }
+                console.log("# of zombies: " + unveiledIncessantZombies);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[3] = 3:
+                if (unveiledFerociousTalons >= 2) {
+                    score += (unveiledFerociousTalons * 3) * 100;
+                }
+                console.log("# of talons: " + unveiledFerociousTalons);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[3] = 4:
+                if (unveiledDeepwoodWitches >= 2) {
+                    score += (unveiledDeepwoodWitches * 4) * 100;
+                }
+                console.log("# of witches: " + unveiledDeepwoodWitches);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[3] = 5:
+                if (unveiledStormboundGargoyles >= 2) {
+                    score += (unveiledStormboundGargoyles * 5) * 100;
+                }
+                console.log("# of gargoyles: " + unveiledStormboundGargoyles);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+        }
+    } else if (unveiledCardsL1[3] != unveiledCardsL1[1] || unveiledCardsL1[3] != unveiledCardsL1[2] || unveiledCardsL1[3] != unveiledCardsL1[0]
+        || unveiledCardsL1[3] != unveiledCardsL1[4]) {
+        switch (unveiledCardsL1[3]) {
+            case unveiledCardsL1[3] = 1:
+                life -= unveiledTinyWhelps;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[3] = 2:
+                life -= unveiledIncessantZombies * 2;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[3] = 3:
+                life -= unveiledFerociousTalons * 3;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[3] = 4:
+                life -= unveiledDeepwoodWitches * 4;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[3] = 5:
+                life -= unveiledStormboundGargoyles * 5;
+                lifeText.text = "" + life;
+        }
+    } else if (unveiledCardsL1[3] != unveiledCardsL2[0] || unveiledCardsL1[3] != unveiledCardsL2[1] || unveiledCardsL1[3] != unveiledCardsL2[2]
+        || unveiledCardsL1[3] != unveiledCardsL2[3] || unveiledCardsL1[3] != unveiledCardsL2[4]) {
+        switch (unveiledCardsL1[3]) {
+            case unveiledCardsL1[3] = 1:
+                life -= unveiledTinyWhelps;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[3] = 2:
+                life -= unveiledIncessantZombies * 2;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[3] = 3:
+                life -= unveiledFerociousTalons * 3;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[3] = 4:
+                life -= unveiledDeepwoodWitches * 4;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[3] = 5:
+                life -= unveiledStormboundGargoyles * 5;
+                lifeText.text = "" + life;
+        }
+    }
 }
 
 function checkMatchFiveL1() {
+    if (unveiledCardsL1[4] == unveiledCardsL1[1] || unveiledCardsL1[4] == unveiledCardsL1[2] || unveiledCardsL1[4] == unveiledCardsL1[3]
+        || unveiledCardsL1[4] == unveiledCardsL1[0]) {
 
+        switch (unveiledCardsL1[4]) {
+            case unveiledCardsL1[4] = 1:
+                if (unveiledTinyWhelps >= 2) {
+                    score += unveiledTinyWhelps * 100;
+                }
+                console.log("# of whelps: " + unveiledTinyWhelps);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[4] = 2:
+                if (unveiledIncessantZombies >= 2) {
+                    score += (unveiledIncessantZombies * 2) * 100;
+                }
+                console.log("# of zombies: " + unveiledIncessantZombies);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[4] = 3:
+                if (unveiledFerociousTalons >= 2) {
+                    score += (unveiledFerociousTalons * 3) * 100;
+                }
+                console.log("# of talons: " + unveiledFerociousTalons);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[4] = 4:
+                if (unveiledDeepwoodWitches >= 2) {
+                    score += (unveiledDeepwoodWitches * 4) * 100;
+                }
+                console.log("# of witches: " + unveiledDeepwoodWitches);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[4] = 5:
+                if (unveiledStormboundGargoyles >= 2) {
+                    score += (unveiledStormboundGargoyles * 5) * 100;
+                }
+                console.log("# of gargoyles: " + unveiledStormboundGargoyles);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+        }
+    } else if (unveiledCardsL1[4] == unveiledCardsL2[0] || unveiledCardsL1[4] == unveiledCardsL2[1] || unveiledCardsL1[4] == unveiledCardsL2[2]
+        || unveiledCardsL1[4] == unveiledCardsL2[3] || unveiledCardsL1[4] == unveiledCardsL2[4]) {
+        switch (unveiledCardsL1[4]) {
+            case unveiledCardsL1[4] = 1:
+                if (unveiledTinyWhelps >= 2) {
+                    score += unveiledTinyWhelps * 100;
+                }
+                console.log("# of whelps: " + unveiledTinyWhelps);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[4] = 2:
+                if (unveiledIncessantZombies >= 2) {
+                    score += (unveiledIncessantZombies * 2) * 100;
+                }
+                console.log("# of zombies: " + unveiledIncessantZombies);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[4] = 3:
+                if (unveiledFerociousTalons >= 2) {
+                    score += (unveiledFerociousTalons * 3) * 100;
+                }
+                console.log("# of talons: " + unveiledFerociousTalons);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[4] = 4:
+                if (unveiledDeepwoodWitches >= 2) {
+                    score += (unveiledDeepwoodWitches * 4) * 100;
+                }
+                console.log("# of witches: " + unveiledDeepwoodWitches);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL1[4] = 5:
+                if (unveiledStormboundGargoyles >= 2) {
+                    score += (unveiledStormboundGargoyles * 5) * 100;
+                }
+                console.log("# of gargoyles: " + unveiledStormboundGargoyles);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+        }
+    } else if (unveiledCardsL1[4] != unveiledCardsL1[1] || unveiledCardsL1[4] != unveiledCardsL1[2] || unveiledCardsL1[4] != unveiledCardsL1[3]
+        || unveiledCardsL1[4] != unveiledCardsL1[0]) {
+        switch (unveiledCardsL1[4]) {
+            case unveiledCardsL1[4] = 1:
+                life -= unveiledTinyWhelps;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[4] = 2:
+                life -= unveiledIncessantZombies * 2;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[4] = 3:
+                life -= unveiledFerociousTalons * 3;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[4] = 4:
+                life -= unveiledDeepwoodWitches * 4;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[4] = 5:
+                life -= unveiledStormboundGargoyles * 5;
+                lifeText.text = "" + life;
+        }
+    } else if (unveiledCardsL1[4] != unveiledCardsL2[0] || unveiledCardsL1[4] != unveiledCardsL2[1] || unveiledCardsL1[4] != unveiledCardsL2[2]
+        || unveiledCardsL1[4] != unveiledCardsL2[3] || unveiledCardsL1[4] != unveiledCardsL2[4]) {
+        switch (unveiledCardsL1[4]) {
+            case unveiledCardsL1[4] = 1:
+                life -= unveiledTinyWhelps;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[4] = 2:
+                life -= unveiledIncessantZombies * 2;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[4] = 3:
+                life -= unveiledFerociousTalons * 3;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[4] = 4:
+                life -= unveiledDeepwoodWitches * 4;
+                lifeText.text = "" + life;
+            case unveiledCardsL1[4] = 5:
+                life -= unveiledStormboundGargoyles * 5;
+                lifeText.text = "" + life;
+        }
+    }
 }
 
 function checkMatchOneL2() {
+    if (unveiledCardsL2[0] == unveiledCardsL1[0] || unveiledCardsL2[0] == unveiledCardsL1[1] || unveiledCardsL2[0] == unveiledCardsL1[2]
+        || unveiledCardsL2[0] == unveiledCardsL1[3] || unveiledCardsL2[0] == unveiledCardsL1[4]) {
 
+        switch (unveiledCardsL2[0]) {
+            case unveiledCardsL2[0] = 1:
+                if (unveiledTinyWhelps >= 2) {
+                    score += unveiledTinyWhelps * 100;
+                }
+                console.log("# of whelps: " + unveiledTinyWhelps);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[0] = 2:
+                if (unveiledIncessantZombies >= 2) {
+                    score += (unveiledIncessantZombies * 2) * 100;
+                }
+                console.log("# of zombies: " + unveiledIncessantZombies);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[0] = 3:
+                if (unveiledFerociousTalons >= 2) {
+                    score += (unveiledFerociousTalons * 3) * 100;
+                }
+                console.log("# of talons: " + unveiledFerociousTalons);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[0] = 4:
+                if (unveiledDeepwoodWitches >= 2) {
+                    score += (unveiledDeepwoodWitches * 4) * 100;
+                }
+                console.log("# of witches: " + unveiledDeepwoodWitches);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[0] = 5:
+                if (unveiledStormboundGargoyles >= 2) {
+                    score += (unveiledStormboundGargoyles * 5) * 100;
+                }
+                console.log("# of gargoyles: " + unveiledStormboundGargoyles);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+        }
+    } else if (unveiledCardsL2[0] == unveiledCardsL2[1] || unveiledCardsL2[0] == unveiledCardsL2[2] || unveiledCardsL2[0] == unveiledCardsL2[3]
+        || unveiledCardsL2[0] == unveiledCardsL2[4]) {
+        switch (unveiledCardsL2[0]) {
+            case unveiledCardsL2[0] = 1:
+                if (unveiledTinyWhelps >= 2) {
+                    score += unveiledTinyWhelps * 100;
+                }
+                console.log("# of whelps: " + unveiledTinyWhelps);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[0] = 2:
+                if (unveiledIncessantZombies >= 2) {
+                    score += (unveiledIncessantZombies * 2) * 100;
+                }
+                console.log("# of zombies: " + unveiledIncessantZombies);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[0] = 3:
+                if (unveiledFerociousTalons >= 2) {
+                    score += (unveiledFerociousTalons * 3) * 100;
+                }
+                console.log("# of talons: " + unveiledFerociousTalons);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[0] = 4:
+                if (unveiledDeepwoodWitches >= 2) {
+                    score += (unveiledDeepwoodWitches * 4) * 100;
+                }
+                console.log("# of witches: " + unveiledDeepwoodWitches);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[0] = 5:
+                if (unveiledStormboundGargoyles >= 2) {
+                    score += (unveiledStormboundGargoyles * 5) * 100;
+                }
+                console.log("# of gargoyles: " + unveiledStormboundGargoyles);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+        }
+    } else if (unveiledCardsL2[0] != unveiledCardsL1[0] || unveiledCardsL2[0] != unveiledCardsL1[1] || unveiledCardsL2[0] != unveiledCardsL1[2]
+        || unveiledCardsL2[0] != unveiledCardsL1[3] || unveiledCardsL2[0] != unveiledCardsL1[4]) {
+        switch (unveiledCardsL2[0]) {
+            case unveiledCardsL2[0] = 1:
+                life -= unveiledTinyWhelps;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[0] = 2:
+                life -= unveiledIncessantZombies * 2;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[0] = 3:
+                life -= unveiledFerociousTalons * 3;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[0] = 4:
+                life -= unveiledDeepwoodWitches * 4;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[0] = 5:
+                life -= unveiledStormboundGargoyles * 5;
+                lifeText.text = "" + life;
+        }
+    } else if (unveiledCardsL2[0] != unveiledCardsL2[1] || unveiledCardsL2[0] != unveiledCardsL2[2] || unveiledCardsL2[0] != unveiledCardsL2[3]
+        || unveiledCardsL2[0] != unveiledCardsL2[4]) {
+        switch (unveiledCardsL2[0]) {
+            case unveiledCardsL2[0] = 1:
+                life -= unveiledTinyWhelps;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[0] = 2:
+                life -= unveiledIncessantZombies * 2;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[0] = 3:
+                life -= unveiledFerociousTalons * 3;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[0] = 4:
+                life -= unveiledDeepwoodWitches * 4;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[0] = 5:
+                life -= unveiledStormboundGargoyles * 5;
+                lifeText.text = "" + life;
+        }
+    }
 }
 
 function checkMatchTwoL2() {
+    if (unveiledCardsL2[1] == unveiledCardsL1[0] || unveiledCardsL2[1] == unveiledCardsL1[1] || unveiledCardsL2[1] == unveiledCardsL1[2]
+        || unveiledCardsL2[1] == unveiledCardsL1[3] || unveiledCardsL2[1] == unveiledCardsL1[4]) {
 
+        switch (unveiledCardsL2[1]) {
+            case unveiledCardsL2[1] = 1:
+                if (unveiledTinyWhelps >= 2) {
+                    score += unveiledTinyWhelps * 100;
+                }
+                console.log("# of whelps: " + unveiledTinyWhelps);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[1] = 2:
+                if (unveiledIncessantZombies >= 2) {
+                    score += (unveiledIncessantZombies * 2) * 100;
+                }
+                console.log("# of zombies: " + unveiledIncessantZombies);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[1] = 3:
+                if (unveiledFerociousTalons >= 2) {
+                    score += (unveiledFerociousTalons * 3) * 100;
+                }
+                console.log("# of talons: " + unveiledFerociousTalons);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[1] = 4:
+                if (unveiledDeepwoodWitches >= 2) {
+                    score += (unveiledDeepwoodWitches * 4) * 100;
+                }
+                console.log("# of witches: " + unveiledDeepwoodWitches);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[1] = 5:
+                if (unveiledStormboundGargoyles >= 2) {
+                    score += (unveiledStormboundGargoyles * 5) * 100;
+                }
+                console.log("# of gargoyles: " + unveiledStormboundGargoyles);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+        }
+    } else if (unveiledCardsL2[1] == unveiledCardsL2[0] || unveiledCardsL2[1] == unveiledCardsL2[2] || unveiledCardsL2[1] == unveiledCardsL2[3]
+        || unveiledCardsL2[1] == unveiledCardsL2[4]) {
+        switch (unveiledCardsL2[1]) {
+            case unveiledCardsL2[1] = 1:
+                if (unveiledTinyWhelps >= 2) {
+                    score += unveiledTinyWhelps * 100;
+                }
+                console.log("# of whelps: " + unveiledTinyWhelps);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[1] = 2:
+                if (unveiledIncessantZombies >= 2) {
+                    score += (unveiledIncessantZombies * 2) * 100;
+                }
+                console.log("# of zombies: " + unveiledIncessantZombies);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[1] = 3:
+                if (unveiledFerociousTalons >= 2) {
+                    score += (unveiledFerociousTalons * 3) * 100;
+                }
+                console.log("# of talons: " + unveiledFerociousTalons);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[1] = 4:
+                if (unveiledDeepwoodWitches >= 2) {
+                    score += (unveiledDeepwoodWitches * 4) * 100;
+                }
+                console.log("# of witches: " + unveiledDeepwoodWitches);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[1] = 5:
+                if (unveiledStormboundGargoyles >= 2) {
+                    score += (unveiledStormboundGargoyles * 5) * 100;
+                }
+                console.log("# of gargoyles: " + unveiledStormboundGargoyles);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+        }
+    } else if (unveiledCardsL2[1] != unveiledCardsL1[0] || unveiledCardsL2[1] != unveiledCardsL1[1] || unveiledCardsL2[1] != unveiledCardsL1[2]
+        || unveiledCardsL2[1] != unveiledCardsL1[3] || unveiledCardsL2[1] != unveiledCardsL1[4]) {
+        switch (unveiledCardsL2[1]) {
+            case unveiledCardsL2[1] = 1:
+                life -= unveiledTinyWhelps;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[1] = 2:
+                life -= unveiledIncessantZombies * 2;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[1] = 3:
+                life -= unveiledFerociousTalons * 3;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[1] = 4:
+                life -= unveiledDeepwoodWitches * 4;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[1] = 5:
+                life -= unveiledStormboundGargoyles * 5;
+                lifeText.text = "" + life;
+        }
+    } else if (unveiledCardsL2[1] != unveiledCardsL2[0] || unveiledCardsL2[1] != unveiledCardsL2[2] || unveiledCardsL2[1] != unveiledCardsL2[3]
+        || unveiledCardsL2[1] != unveiledCardsL2[4]) {
+        switch (unveiledCardsL2[1]) {
+            case unveiledCardsL2[1] = 1:
+                life -= unveiledTinyWhelps;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[1] = 2:
+                life -= unveiledIncessantZombies * 2;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[1] = 3:
+                life -= unveiledFerociousTalons * 3;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[1] = 4:
+                life -= unveiledDeepwoodWitches * 4;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[1] = 5:
+                life -= unveiledStormboundGargoyles * 5;
+                lifeText.text = "" + life;
+        }
+    }
 }
 
 function checkMatchThreeL2() {
+    if (unveiledCardsL2[2] == unveiledCardsL1[0] || unveiledCardsL2[2] == unveiledCardsL1[1] || unveiledCardsL2[2] == unveiledCardsL1[2]
+        || unveiledCardsL2[2] == unveiledCardsL1[3] || unveiledCardsL2[2] == unveiledCardsL1[4]) {
 
+        switch (unveiledCardsL2[2]) {
+            case unveiledCardsL2[2] = 1:
+                if (unveiledTinyWhelps >= 2) {
+                    score += unveiledTinyWhelps * 100;
+                }
+                console.log("# of whelps: " + unveiledTinyWhelps);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[2] = 2:
+                if (unveiledIncessantZombies >= 2) {
+                    score += (unveiledIncessantZombies * 2) * 100;
+                }
+                console.log("# of zombies: " + unveiledIncessantZombies);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[2] = 3:
+                if (unveiledFerociousTalons >= 2) {
+                    score += (unveiledFerociousTalons * 3) * 100;
+                }
+                console.log("# of talons: " + unveiledFerociousTalons);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[2] = 4:
+                if (unveiledDeepwoodWitches >= 2) {
+                    score += (unveiledDeepwoodWitches * 4) * 100;
+                }
+                console.log("# of witches: " + unveiledDeepwoodWitches);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[2] = 5:
+                if (unveiledStormboundGargoyles >= 2) {
+                    score += (unveiledStormboundGargoyles * 5) * 100;
+                }
+                console.log("# of gargoyles: " + unveiledStormboundGargoyles);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+        }
+    } else if (unveiledCardsL2[2] == unveiledCardsL2[1] || unveiledCardsL2[2] == unveiledCardsL2[0] || unveiledCardsL2[2] == unveiledCardsL2[3]
+        || unveiledCardsL2[2] == unveiledCardsL2[4]) {
+        switch (unveiledCardsL2[2]) {
+            case unveiledCardsL2[2] = 1:
+                if (unveiledTinyWhelps >= 2) {
+                    score += unveiledTinyWhelps * 100;
+                }
+                console.log("# of whelps: " + unveiledTinyWhelps);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[2] = 2:
+                if (unveiledIncessantZombies >= 2) {
+                    score += (unveiledIncessantZombies * 2) * 100;
+                }
+                console.log("# of zombies: " + unveiledIncessantZombies);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[2] = 3:
+                if (unveiledFerociousTalons >= 2) {
+                    score += (unveiledFerociousTalons * 3) * 100;
+                }
+                console.log("# of talons: " + unveiledFerociousTalons);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[2] = 4:
+                if (unveiledDeepwoodWitches >= 2) {
+                    score += (unveiledDeepwoodWitches * 4) * 100;
+                }
+                console.log("# of witches: " + unveiledDeepwoodWitches);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[2] = 5:
+                if (unveiledStormboundGargoyles >= 2) {
+                    score += (unveiledStormboundGargoyles * 5) * 100;
+                }
+                console.log("# of gargoyles: " + unveiledStormboundGargoyles);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+        }
+    } else if (unveiledCardsL2[2] != unveiledCardsL1[0] || unveiledCardsL2[2] != unveiledCardsL1[1] || unveiledCardsL2[2] != unveiledCardsL1[2]
+        || unveiledCardsL2[2] != unveiledCardsL1[3] || unveiledCardsL2[2] != unveiledCardsL1[4]) {
+        switch (unveiledCardsL2[2]) {
+            case unveiledCardsL2[2] = 1:
+                life -= unveiledTinyWhelps;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[2] = 2:
+                life -= unveiledIncessantZombies * 2;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[2] = 3:
+                life -= unveiledFerociousTalons * 3;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[2] = 4:
+                life -= unveiledDeepwoodWitches * 4;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[2] = 5:
+                life -= unveiledStormboundGargoyles * 5;
+                lifeText.text = "" + life;
+        }
+    } else if (unveiledCardsL2[2] != unveiledCardsL2[0] || unveiledCardsL2[2] != unveiledCardsL2[1] || unveiledCardsL2[2] != unveiledCardsL2[3]
+        || unveiledCardsL2[2] != unveiledCardsL2[4]) {
+        switch (unveiledCardsL2[2]) {
+            case unveiledCardsL2[2] = 1:
+                life -= unveiledTinyWhelps;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[2] = 2:
+                life -= unveiledIncessantZombies * 2;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[2] = 3:
+                life -= unveiledFerociousTalons * 3;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[2] = 4:
+                life -= unveiledDeepwoodWitches * 4;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[2] = 5:
+                life -= unveiledStormboundGargoyles * 5;
+                lifeText.text = "" + life;
+        }
+    }
 }
 
 function checkMatchFourL2() {
+    if (unveiledCardsL2[3] == unveiledCardsL1[0] || unveiledCardsL2[3] == unveiledCardsL1[1] || unveiledCardsL2[3] == unveiledCardsL1[2]
+        || unveiledCardsL2[3] == unveiledCardsL1[3] || unveiledCardsL2[3] == unveiledCardsL1[4]) {
 
+        switch (unveiledCardsL2[3]) {
+            case unveiledCardsL2[3] = 1:
+                if (unveiledTinyWhelps >= 2) {
+                    score += unveiledTinyWhelps * 100;
+                }
+                console.log("# of whelps: " + unveiledTinyWhelps);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[3] = 2:
+                if (unveiledIncessantZombies >= 2) {
+                    score += (unveiledIncessantZombies * 2) * 100;
+                }
+                console.log("# of zombies: " + unveiledIncessantZombies);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[3] = 3:
+                if (unveiledFerociousTalons >= 2) {
+                    score += (unveiledFerociousTalons * 3) * 100;
+                }
+                console.log("# of talons: " + unveiledFerociousTalons);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[3] = 4:
+                if (unveiledDeepwoodWitches >= 2) {
+                    score += (unveiledDeepwoodWitches * 4) * 100;
+                }
+                console.log("# of witches: " + unveiledDeepwoodWitches);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[3] = 5:
+                if (unveiledStormboundGargoyles >= 2) {
+                    score += (unveiledStormboundGargoyles * 5) * 100;
+                }
+                console.log("# of gargoyles: " + unveiledStormboundGargoyles);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+        }
+    } else if (unveiledCardsL2[3] == unveiledCardsL2[0] || unveiledCardsL2[3] == unveiledCardsL2[2] || unveiledCardsL2[3] == unveiledCardsL2[1]
+        || unveiledCardsL2[3] == unveiledCardsL2[4]) {
+        switch (unveiledCardsL2[3]) {
+            case unveiledCardsL2[3] = 1:
+                if (unveiledTinyWhelps >= 2) {
+                    score += unveiledTinyWhelps * 100;
+                }
+                console.log("# of whelps: " + unveiledTinyWhelps);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[3] = 2:
+                if (unveiledIncessantZombies >= 2) {
+                    score += (unveiledIncessantZombies * 2) * 100;
+                }
+                console.log("# of zombies: " + unveiledIncessantZombies);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[3] = 3:
+                if (unveiledFerociousTalons >= 2) {
+                    score += (unveiledFerociousTalons * 3) * 100;
+                }
+                console.log("# of talons: " + unveiledFerociousTalons);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[3] = 4:
+                if (unveiledDeepwoodWitches >= 2) {
+                    score += (unveiledDeepwoodWitches * 4) * 100;
+                }
+                console.log("# of witches: " + unveiledDeepwoodWitches);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[3] = 5:
+                if (unveiledStormboundGargoyles >= 2) {
+                    score += (unveiledStormboundGargoyles * 5) * 100;
+                }
+                console.log("# of gargoyles: " + unveiledStormboundGargoyles);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+        }
+    } else if (unveiledCardsL2[3] != unveiledCardsL1[0] || unveiledCardsL2[3] != unveiledCardsL1[1] || unveiledCardsL2[3] != unveiledCardsL1[2]
+        || unveiledCardsL2[3] != unveiledCardsL1[3] || unveiledCardsL2[3] != unveiledCardsL1[4]) {
+        switch (unveiledCardsL2[3]) {
+            case unveiledCardsL2[3] = 1:
+                life -= unveiledTinyWhelps;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[3] = 2:
+                life -= unveiledIncessantZombies * 2;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[3] = 3:
+                life -= unveiledFerociousTalons * 3;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[3] = 4:
+                life -= unveiledDeepwoodWitches * 4;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[3] = 5:
+                life -= unveiledStormboundGargoyles * 5;
+                lifeText.text = "" + life;
+        }
+    } else if (unveiledCardsL2[3] != unveiledCardsL2[0] || unveiledCardsL2[3] != unveiledCardsL2[2] || unveiledCardsL2[3] != unveiledCardsL2[1]
+        || unveiledCardsL2[3] != unveiledCardsL2[4]) {
+        switch (unveiledCardsL2[3]) {
+            case unveiledCardsL2[3] = 1:
+                life -= unveiledTinyWhelps;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[3] = 2:
+                life -= unveiledIncessantZombies * 2;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[3] = 3:
+                life -= unveiledFerociousTalons * 3;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[3] = 4:
+                life -= unveiledDeepwoodWitches * 4;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[3] = 5:
+                life -= unveiledStormboundGargoyles * 5;
+                lifeText.text = "" + life;
+        }
+    }
 }
 
 function checkMatchFiveL2() {
+    if (unveiledCardsL2[4] == unveiledCardsL1[0] || unveiledCardsL2[4] == unveiledCardsL1[1] || unveiledCardsL2[4] == unveiledCardsL1[2]
+        || unveiledCardsL2[4] == unveiledCardsL1[3] || unveiledCardsL2[4] == unveiledCardsL1[4]) {
 
+        switch (unveiledCardsL2[4]) {
+            case unveiledCardsL2[4] = 1:
+                if (unveiledTinyWhelps >= 2) {
+                    score += unveiledTinyWhelps * 100;
+                }
+                console.log("# of whelps: " + unveiledTinyWhelps);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[4] = 2:
+                if (unveiledIncessantZombies >= 2) {
+                    score += (unveiledIncessantZombies * 2) * 100;
+                }
+                console.log("# of zombies: " + unveiledIncessantZombies);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[4] = 3:
+                if (unveiledFerociousTalons >= 2) {
+                    score += (unveiledFerociousTalons * 3) * 100;
+                }
+                console.log("# of talons: " + unveiledFerociousTalons);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[4] = 4:
+                if (unveiledDeepwoodWitches >= 2) {
+                    score += (unveiledDeepwoodWitches * 4) * 100;
+                }
+                console.log("# of witches: " + unveiledDeepwoodWitches);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[4] = 5:
+                if (unveiledStormboundGargoyles >= 2) {
+                    score += (unveiledStormboundGargoyles * 5) * 100;
+                }
+                console.log("# of gargoyles: " + unveiledStormboundGargoyles);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+        }
+    } else if (unveiledCardsL2[4] == unveiledCardsL2[0] || unveiledCardsL2[4] == unveiledCardsL2[2] || unveiledCardsL2[4] == unveiledCardsL2[3]
+        || unveiledCardsL2[4] == unveiledCardsL2[1]) {
+        switch (unveiledCardsL2[4]) {
+            case unveiledCardsL2[4] = 1:
+                if (unveiledTinyWhelps >= 2) {
+                    score += unveiledTinyWhelps * 100;
+                }
+                console.log("# of whelps: " + unveiledTinyWhelps);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[4] = 2:
+                if (unveiledIncessantZombies >= 2) {
+                    score += (unveiledIncessantZombies * 2) * 100;
+                }
+                console.log("# of zombies: " + unveiledIncessantZombies);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[4] = 3:
+                if (unveiledFerociousTalons >= 2) {
+                    score += (unveiledFerociousTalons * 3) * 100;
+                }
+                console.log("# of talons: " + unveiledFerociousTalons);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[4] = 4:
+                if (unveiledDeepwoodWitches >= 2) {
+                    score += (unveiledDeepwoodWitches * 4) * 100;
+                }
+                console.log("# of witches: " + unveiledDeepwoodWitches);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+            case unveiledCardsL2[4] = 5:
+                if (unveiledStormboundGargoyles >= 2) {
+                    score += (unveiledStormboundGargoyles * 5) * 100;
+                }
+                console.log("# of gargoyles: " + unveiledStormboundGargoyles);
+                console.log("score: " + score);
+                scoreText.text = "" + score;
+                break;
+        }
+    } else if (unveiledCardsL2[4] != unveiledCardsL1[0] || unveiledCardsL2[4] != unveiledCardsL1[1] || unveiledCardsL2[4] != unveiledCardsL1[2]
+        || unveiledCardsL2[4] != unveiledCardsL1[3] || unveiledCardsL2[4] != unveiledCardsL1[4]) {
+        switch (unveiledCardsL2[4]) {
+            case unveiledCardsL2[4] = 1:
+                life -= unveiledTinyWhelps;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[4] = 2:
+                life -= unveiledIncessantZombies * 2;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[4] = 3:
+                life -= unveiledFerociousTalons * 3;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[4] = 4:
+                life -= unveiledDeepwoodWitches * 4;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[4] = 5:
+                life -= unveiledStormboundGargoyles * 5;
+                lifeText.text = "" + life;
+        }
+    } else if (unveiledCardsL2[4] != unveiledCardsL2[0] || unveiledCardsL2[4] != unveiledCardsL2[2] || unveiledCardsL2[4] != unveiledCardsL2[3]
+        || unveiledCardsL2[4] != unveiledCardsL2[1]) {
+        switch (unveiledCardsL2[4]) {
+            case unveiledCardsL2[4] = 1:
+                life -= unveiledTinyWhelps;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[4] = 2:
+                life -= unveiledIncessantZombies * 2;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[4] = 3:
+                life -= unveiledFerociousTalons * 3;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[4] = 4:
+                life -= unveiledDeepwoodWitches * 4;
+                lifeText.text = "" + life;
+            case unveiledCardsL2[4] = 5:
+                life -= unveiledStormboundGargoyles * 5;
+                lifeText.text = "" + life;
+        }
+    }
 }
 
 /* Utility function to check if a value falls within a range of bounds */
@@ -503,21 +1738,21 @@ function BoardState() {
     var outCome = [0, 0, 0, 0 , 0];
 
     for (var randomCard = 0; randomCard < 5; randomCard++) {
-        outCome[randomCard] = Math.floor((Math.random() * 65) + 1);
+        outCome[randomCard] = Math.floor((Math.random() * 100) + 1);
         switch (outCome[randomCard]) {
-            case checkRange(outCome[randomCard], 1, 27):  // 41.5% probability
+            case checkRange(outCome[randomCard], 1, 30):  // 41.5% probability
                 firstLine[randomCard] = "tinyWhelpCard";
                 break;
-            case checkRange(outCome[randomCard], 28, 37): // 15.4% probability
+            case checkRange(outCome[randomCard], 31, 65): // 15.4% probability
                 firstLine[randomCard] = "IncessantZombieCard";
                 break;
-            case checkRange(outCome[randomCard], 38, 46): // 13.8% probability
+            case checkRange(outCome[randomCard], 66, 80): // 13.8% probability
                 firstLine[randomCard] = "FerociousTalonCard";
                 break;
-            case checkRange(outCome[randomCard], 47, 54): // 12.3% probability
+            case checkRange(outCome[randomCard], 81, 90): // 12.3% probability
                 firstLine[randomCard] = "DeepwoodWitchCard";
                 break;
-            case checkRange(outCome[randomCard], 55, 65): //  7.7% probability
+            case checkRange(outCome[randomCard], 91, 100): //  7.7% probability
                 firstLine[randomCard] = "StormboundGargoyleCard";
                 break;
         }
@@ -548,16 +1783,12 @@ function BoardState() {
 }
 
 function gameLoop() {
-    stage.update(); // stage refresh
-
+    stage.update();
 }
 
 function main() {
     // instantiate game container
     game = new createjs.Container();
-
-
-    // Create Dice Roller User Interface
     createUI();
     stage.addChild(game);
 }
