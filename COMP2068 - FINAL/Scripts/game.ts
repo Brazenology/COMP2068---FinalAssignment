@@ -1,34 +1,57 @@
-﻿var canvas;
+﻿/*
+ *COMP2068 - Final Project
+ * Monster Matcher Game
+ * This is the main typescript file for the game. 
+ * The game loads with the start screen appearing with two options: play now and instructions.
+ * The instructions screen tells the user the rules of the game and how to get started.
+ * The play now button will start the game and will continue until the player runs out of life points.
+ * After this, the game will display a game over screen with the players score.
+ * Created by: Brendan Kallio
+ * Date: April 13, 2015
+*/
+
+//The canvas where the game will be displayed
+var canvas;
 var stage: createjs.Stage;
 
 // Game Objects
-var unveiledCards: number;
 var background: createjs.Bitmap;
 var startPage: createjs.Bitmap;
 var gameOverPage: createjs.Bitmap;
+var instructionsPage: createjs.Bitmap;
 var playAgainButton: createjs.Bitmap;
 var playButton: createjs.Bitmap;
 var instructionsButton: createjs.Bitmap;
 var game: createjs.Container; 
+
+//arrays of the cards on line one and two
 var cardsL1: createjs.Bitmap[] = [];
 var cardsL2: createjs.Bitmap[] = [];
+
+//an array that stores the cards on lines one and two as numbers
 var storedCardsL1: Array<number> = [];
 var storedCardsL2: Array<number> = [];
+
+//an array of cardbacks
 var cardbacksL1: createjs.Bitmap[] = [];
 var cardbacksL2: createjs.Bitmap[] = [];
+
+//an array of the cards the user has flipped over and stored as numbers
 var unveiledCardsL1: Array<number> = [];
 var unveiledCardsL2: Array<number> = [];
+
+//containers for score and life to be displayed
 var scoreContainer = new createjs.Container();
 var lifeContainer = new createjs.Container();
 var gameOverScoreContainer = new createjs.Container();
 
 // Game Variables
+var lineOne;
+var lineTwo;
 var score = 0;
 var life = 30;
 var RCGLineOne;
 var RCGLineTwo;
-var lineOne;
-var lineTwo;
 var tinyWhelpImage = new createjs.Bitmap("assets/images/tinyWhelpCard.png");
 var incessantZombieImage = new createjs.Bitmap("assets/images/IncessantZombieCard.png");
 var ferociousTalonImage = new createjs.Bitmap("assets/images/FerociousTalonCard.png");
@@ -49,6 +72,7 @@ var cardContainers: createjs.Container[] = [];
 var scoreText = new createjs.Text("" + score, "25px Consolas", "#000000");
 var lifeText = new createjs.Text("" + life, "25px Consolas", "#000000");
 
+//button hover effects
 function playButtonOut() {
     playButton.alpha = 1.0;
 }
@@ -83,6 +107,8 @@ function init() {
     main();
 }
 
+//Fetches which cards have been selected for each row and designates the appropriate number into the stored cards arrays
+//This function also adds the card backs on top of the card images.
 function LoadCards() {
     RCGLineOne = BoardState();
     RCGLineTwo = BoardState();
@@ -160,6 +186,7 @@ function LoadCards() {
     cardbacksL2[4].addEventListener("click", flipCardFiveL2);
 }
 
+//Flip card functions that tell the game to remove the selected card back and tally which card has been revealed
 function flipCardOneL1() {
     game.removeChild(cardbacksL1[0]);
     switch (storedCardsL1[0]) {
@@ -215,7 +242,6 @@ function flipCardTwoL1() {
     console.log("Card 2 is a " + unveiledCardsL1[1]);
     checkMatchTwoL1();
 }
-
 
 function flipCardThreeL1() {
     game.removeChild(cardbacksL1[2]);
@@ -442,7 +468,7 @@ function flipCardFiveL2() {
     checkMatchFiveL2();
 }
 
-
+//These functions check for matches amongst revealed cards and updates the players score and life points accordingly
 function checkMatchOneL1() {
     if (unveiledCardsL1[0] == unveiledCardsL1[1] || unveiledCardsL1[0] == unveiledCardsL1[2] || unveiledCardsL1[0] == unveiledCardsL1[3]
         || unveiledCardsL1[0] == unveiledCardsL1[4]) {
@@ -1614,6 +1640,7 @@ function checkMatchFiveL2() {
     checkLife();
 }
 
+//This function checks to see if the user has selected all the cards and resets the game board with new cards
 function checkBoardState() {
     if (unveiledCardsL1[0] == storedCardsL1[0] && unveiledCardsL1[1] == storedCardsL1[1] && unveiledCardsL1[2] == storedCardsL1[2]
         && unveiledCardsL1[3] == storedCardsL1[3] && unveiledCardsL1[4] == storedCardsL1[4]) {
@@ -1624,6 +1651,7 @@ function checkBoardState() {
             for (var card = 0; card < 5; card++) {
                 game.removeChild(cardsL1[card]);
             }
+
             for (var card = 0; card < 5; card++) {
                 game.removeChild(cardsL2[card]);
             }
@@ -1638,6 +1666,7 @@ function checkBoardState() {
     }
 }
 
+//Thus function checks to see if the player's life ever reach zero or below. If so, it displays the game over screen and a play again option
 function checkLife() {
     if (life <= 0) {
         gameOverPage = new createjs.Bitmap("assets/images/gameOverPage.png");  
@@ -1660,6 +1689,7 @@ function checkLife() {
     }
 }
 
+//This function restarts the game as if the user just reloaded the webpage
 function playAgain() {
 
     game.removeChild(gameOverPage);
@@ -1688,25 +1718,6 @@ function playAgain() {
     unveiledDeepwoodWitches = 0;
     unveiledStormboundGargoyles = 0;
     createUI();
-
-    /*BoardState();
-    LoadCards();
-
-
-    //Displays the player's score
-    scoreContainer.x = 600;
-    scoreContainer.y = 454;
-    scoreText.text = "" + score;
-    scoreContainer.addChild(scoreText);
-    game.addChild(scoreContainer);
-
-    //Displays the player's life total
-    lifeContainer.x = 200;
-    lifeContainer.y = 454;
-    lifeText.text = "" + life;
-    lifeContainer.addChild(lifeText);
-    game.addChild(lifeContainer);
-    */
 }
 
 /* Utility function to check if a value falls within a range of bounds */
@@ -1719,6 +1730,10 @@ function checkRange(value, lowerBounds, upperBounds) {
     }
 }
 
+//This function determines what cards are chosen on the first and second rows
+// This is accomplished by picking a random number between 1 and 100. Each card 
+//is then given a fixed range. If the cards range is within the bounds determined by
+//the random number, that card is selected.
 function BoardState() {
     var firstLine = [" ", " ", " ", " ", " "];
     var secondLine = [" ", " ", " ", " ", " "];
@@ -1727,19 +1742,19 @@ function BoardState() {
     for (var randomCard = 0; randomCard < 5; randomCard++) {
         outCome[randomCard] = Math.floor((Math.random() * 100) + 1);
         switch (outCome[randomCard]) {
-            case checkRange(outCome[randomCard], 1, 30):  // 41.5% probability
+            case checkRange(outCome[randomCard], 1, 30):  
                 firstLine[randomCard] = "tinyWhelpCard";
                 break;
-            case checkRange(outCome[randomCard], 31, 65): // 15.4% probability
+            case checkRange(outCome[randomCard], 31, 65): 
                 firstLine[randomCard] = "IncessantZombieCard";
                 break;
-            case checkRange(outCome[randomCard], 66, 80): // 13.8% probability
+            case checkRange(outCome[randomCard], 66, 80): 
                 firstLine[randomCard] = "FerociousTalonCard";
                 break;
-            case checkRange(outCome[randomCard], 81, 90): // 12.3% probability
+            case checkRange(outCome[randomCard], 81, 90): 
                 firstLine[randomCard] = "DeepwoodWitchCard";
                 break;
-            case checkRange(outCome[randomCard], 91, 100): //  7.7% probability
+            case checkRange(outCome[randomCard], 91, 100): 
                 firstLine[randomCard] = "StormboundGargoyleCard";
                 break;
         }
@@ -1769,6 +1784,7 @@ function BoardState() {
     return secondLine;
 }
 
+//The game starts when this button is clicked on the start page
 function playNow() {
     game.removeChild(playButton);
     game.removeChild(instructionsButton);
@@ -1786,11 +1802,20 @@ function main() {
     stage.addChild(game);
 }
 
+function showInstructions() {
+    instructionsPage = new createjs.Bitmap("assets/images/instructionsPage.png");
+    stage.addChild(instructionsPage);
+    instructionsPage.addEventListener("click", backToHome);
+}
+
+function backToHome() {
+    stage.removeChild(instructionsPage);
+}
+
 function createUI(): void {
-    // instantiate my background
+    // instantiate background
     background = new createjs.Bitmap("assets/images/MonsterMatcherBackground.png");
     game.addChild(background);
-
 
     //Displays the player's score
     score = 0;
@@ -1828,7 +1853,7 @@ function createUI(): void {
     instructionsButton.y = 380;
     game.addChild(instructionsButton);
 
-    instructionsButton.addEventListener("click", playNow);
+    instructionsButton.addEventListener("click", showInstructions);
     instructionsButton.addEventListener("mouseover", instructionsButtonOver);
     instructionsButton.addEventListener("mouseout", instructionsButtonOut);
     

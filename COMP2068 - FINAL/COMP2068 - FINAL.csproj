@@ -73,6 +73,7 @@
     <Content Include="assets\images\gameOverPage.PNG" />
     <Content Include="assets\images\IncessantZombieCard.PNG" />
     <Content Include="assets\images\instructionsButton.png" />
+    <Content Include="assets\images\instructionsPage.PNG" />
     <Content Include="assets\images\MonsterMatcherBackground.PNG" />
     <Content Include="assets\images\playAgainButton.png" />
     <Content Include="assets\images\playButton.png" />
