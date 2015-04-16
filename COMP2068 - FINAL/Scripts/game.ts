@@ -1,4 +1,5 @@
-﻿/*
+﻿
+/*
  *COMP2068 - Final Project
  * Monster Matcher Game
  * This is the main typescript file for the game. 
@@ -13,6 +14,7 @@
 //The canvas where the game will be displayed
 var canvas;
 var stage: createjs.Stage;
+var assetLoader: createjs.LoadQueue;
 
 // Game Objects
 var background: createjs.Bitmap;
@@ -72,6 +74,23 @@ var cardContainers: createjs.Container[] = [];
 var scoreText = new createjs.Text("" + score, "25px Consolas", "#000000");
 var lifeText = new createjs.Text("" + life, "25px Consolas", "#000000");
 
+//A manifest of all game sounds.
+var manifest = [
+    { id: "cardFlip", src: "assets/audio/cardFlip.mp3" },
+    { id: "playerHit", src: "assets/audio/playerHit.wav" },
+    { id: "correct", src: "assets/audio/correct.mp3" },
+    { id: "music", src: "assets/audio/music.wav" }
+];
+
+
+function Preload() {
+    assetLoader = new createjs.LoadQueue();
+    assetLoader.installPlugin(createjs.Sound);
+    createjs.Sound.alternateExtensions = ["mp3"];
+    assetLoader.on("complete", init, this);
+    assetLoader.loadManifest(manifest);
+
+}
 //button hover effects
 function playButtonOut() {
     playButton.alpha = 1.0;
@@ -98,6 +117,7 @@ function playAgainButtonOver() {
 }
 
 function init() {
+
     canvas = document.getElementById("canvas");
     stage = new createjs.Stage(canvas);
     stage.enableMouseOver(20); 
@@ -188,6 +208,7 @@ function LoadCards() {
 
 //Flip card functions that tell the game to remove the selected card back and tally which card has been revealed
 function flipCardOneL1() {
+    createjs.Sound.play("cardFlip");
     game.removeChild(cardbacksL1[0]);
     switch (storedCardsL1[0]) {
         case storedCardsL1[0] = 1:
@@ -216,6 +237,7 @@ function flipCardOneL1() {
 }
 
 function flipCardTwoL1() {
+    createjs.Sound.play("cardFlip");
     game.removeChild(cardbacksL1[1]);
     switch (storedCardsL1[1]) {
         case storedCardsL1[1] = 1:
@@ -244,6 +266,7 @@ function flipCardTwoL1() {
 }
 
 function flipCardThreeL1() {
+    createjs.Sound.play("cardFlip");
     game.removeChild(cardbacksL1[2]);
     switch (storedCardsL1[2]) {
         case storedCardsL1[2] = 1:
@@ -272,6 +295,7 @@ function flipCardThreeL1() {
 }
 
 function flipCardFourL1() {
+    createjs.Sound.play("cardFlip");
     game.removeChild(cardbacksL1[3]);
     switch (storedCardsL1[3]) {
         case storedCardsL1[3] = 1:
@@ -300,6 +324,7 @@ function flipCardFourL1() {
 }
 
 function flipCardFiveL1() {
+    createjs.Sound.play("cardFlip");
     game.removeChild(cardbacksL1[4]);
     switch (storedCardsL1[4]) {
         case storedCardsL1[4] = 1:
@@ -328,6 +353,7 @@ function flipCardFiveL1() {
 }
 
 function flipCardOneL2() {
+    createjs.Sound.play("cardFlip");
     game.removeChild(cardbacksL2[0]);
     switch (storedCardsL2[0]) {
         case storedCardsL2[0] = 1:
@@ -356,6 +382,7 @@ function flipCardOneL2() {
 }
 
 function flipCardTwoL2() {
+    createjs.Sound.play("cardFlip");
     game.removeChild(cardbacksL2[1]);
     switch (storedCardsL2[1]) {
         case storedCardsL2[1] = 1:
@@ -384,6 +411,7 @@ function flipCardTwoL2() {
 }
 
 function flipCardThreeL2() {
+    createjs.Sound.play("cardFlip");
     game.removeChild(cardbacksL2[2]);
     switch (storedCardsL2[2]) {
         case storedCardsL2[2] = 1:
@@ -412,6 +440,7 @@ function flipCardThreeL2() {
 }
 
 function flipCardFourL2() {
+    createjs.Sound.play("cardFlip");
     game.removeChild(cardbacksL2[3]);
     switch (storedCardsL2[3]) {
         case storedCardsL2[3] = 1:
@@ -441,6 +470,7 @@ function flipCardFourL2() {
 
 
 function flipCardFiveL2() {
+    createjs.Sound.play("cardFlip");
     game.removeChild(cardbacksL2[4]);
     switch (storedCardsL2[4]) {
         case storedCardsL2[4] = 1:
@@ -472,6 +502,7 @@ function flipCardFiveL2() {
 function checkMatchOneL1() {
     if (unveiledCardsL1[0] == unveiledCardsL1[1] || unveiledCardsL1[0] == unveiledCardsL1[2] || unveiledCardsL1[0] == unveiledCardsL1[3]
         || unveiledCardsL1[0] == unveiledCardsL1[4]) {
+        createjs.Sound.play("correct");
 
         switch (unveiledCardsL1[0]) {
             case unveiledCardsL1[0] = 1:
@@ -517,6 +548,8 @@ function checkMatchOneL1() {
         }
     } else if (unveiledCardsL1[0] == unveiledCardsL2[0] || unveiledCardsL1[0] == unveiledCardsL2[1] || unveiledCardsL1[0] == unveiledCardsL2[2]
         || unveiledCardsL1[0] == unveiledCardsL2[3] || unveiledCardsL1[0] == unveiledCardsL2[4]) {
+        createjs.Sound.play("correct");
+
         switch (unveiledCardsL1[0]) {
             case unveiledCardsL1[0] = 1:
                 if (unveiledTinyWhelps >= 2) {
@@ -563,6 +596,7 @@ function checkMatchOneL1() {
         && unveiledCardsL1[0] != unveiledCardsL1[4]) {
         if (unveiledCardsL1[0] != unveiledCardsL2[0] && unveiledCardsL1[0] != unveiledCardsL2[1] && unveiledCardsL1[0] != unveiledCardsL2[2]
             && unveiledCardsL1[0] != unveiledCardsL2[3] && unveiledCardsL1[0] != unveiledCardsL2[4]) {
+            createjs.Sound.play("playerHit");
             switch (unveiledCardsL1[0]) {
                 case unveiledCardsL1[0] = 1:
                     life -= unveiledTinyWhelps;
@@ -590,6 +624,7 @@ function checkMatchOneL1() {
 function checkMatchTwoL1() {
     if (unveiledCardsL1[1] == unveiledCardsL1[0] || unveiledCardsL1[1] == unveiledCardsL1[2] || unveiledCardsL1[1] == unveiledCardsL1[3]
         || unveiledCardsL1[1] == unveiledCardsL1[4]) {
+        createjs.Sound.play("correct");
 
         switch (unveiledCardsL1[1]) {
             case unveiledCardsL1[1] = 1:
@@ -635,6 +670,7 @@ function checkMatchTwoL1() {
         }
     } else if (unveiledCardsL1[1] == unveiledCardsL2[0] || unveiledCardsL1[1] == unveiledCardsL2[1] || unveiledCardsL1[1] == unveiledCardsL2[2]
         || unveiledCardsL1[1] == unveiledCardsL2[3] || unveiledCardsL1[1] == unveiledCardsL2[4]) {
+        createjs.Sound.play("correct");
         switch (unveiledCardsL1[1]) {
             case unveiledCardsL1[1] = 1:
                 if (unveiledTinyWhelps >= 2) {
@@ -681,6 +717,7 @@ function checkMatchTwoL1() {
         && unveiledCardsL1[1] != unveiledCardsL1[4]) {
         if (unveiledCardsL1[1] != unveiledCardsL2[0] && unveiledCardsL1[1] != unveiledCardsL2[1] && unveiledCardsL1[1] != unveiledCardsL2[2]
             && unveiledCardsL1[1] != unveiledCardsL2[3] && unveiledCardsL1[1] != unveiledCardsL2[4]) {
+            createjs.Sound.play("playerHit");
             switch (unveiledCardsL1[1]) {
                 case unveiledCardsL1[1] = 1:
                     life -= unveiledTinyWhelps;
@@ -707,6 +744,7 @@ function checkMatchTwoL1() {
 function checkMatchThreeL1() {
     if (unveiledCardsL1[2] == unveiledCardsL1[1] || unveiledCardsL1[2] == unveiledCardsL1[0] || unveiledCardsL1[2] == unveiledCardsL1[3]
         || unveiledCardsL1[2] == unveiledCardsL1[4]) {
+        createjs.Sound.play("correct");
 
         switch (unveiledCardsL1[2]) {
             case unveiledCardsL1[2] = 1:
@@ -752,6 +790,7 @@ function checkMatchThreeL1() {
         }
     } else if (unveiledCardsL1[2] == unveiledCardsL2[0] || unveiledCardsL1[2] == unveiledCardsL2[1] || unveiledCardsL1[2] == unveiledCardsL2[2]
         || unveiledCardsL1[2] == unveiledCardsL2[3] || unveiledCardsL1[2] == unveiledCardsL2[4]) {
+        createjs.Sound.play("correct");
         switch (unveiledCardsL1[2]) {
             case unveiledCardsL1[2] = 1:
                 if (unveiledTinyWhelps >= 2) {
@@ -798,6 +837,7 @@ function checkMatchThreeL1() {
         && unveiledCardsL1[2] != unveiledCardsL1[4]) {
         if (unveiledCardsL1[2] != unveiledCardsL2[0] && unveiledCardsL1[2] != unveiledCardsL2[1] && unveiledCardsL1[2] != unveiledCardsL2[2]
             && unveiledCardsL1[2] != unveiledCardsL2[3] && unveiledCardsL1[2] != unveiledCardsL2[4]) {
+            createjs.Sound.play("playerHit");
         switch (unveiledCardsL1[2]) {
             case unveiledCardsL1[2] = 1:
                 life -= unveiledTinyWhelps;
@@ -824,6 +864,7 @@ function checkMatchThreeL1() {
 function checkMatchFourL1() {
     if (unveiledCardsL1[3] == unveiledCardsL1[1] || unveiledCardsL1[3] == unveiledCardsL1[2] || unveiledCardsL1[3] == unveiledCardsL1[0]
         || unveiledCardsL1[3] == unveiledCardsL1[4]) {
+        createjs.Sound.play("correct");
 
         switch (unveiledCardsL1[3]) {
             case unveiledCardsL1[3] = 1:
@@ -869,6 +910,7 @@ function checkMatchFourL1() {
         }
     } else if (unveiledCardsL1[3] == unveiledCardsL2[0] || unveiledCardsL1[3] == unveiledCardsL2[1] || unveiledCardsL1[3] == unveiledCardsL2[2]
         || unveiledCardsL1[3] == unveiledCardsL2[3] || unveiledCardsL1[3] == unveiledCardsL2[4]) {
+        createjs.Sound.play("correct");
         switch (unveiledCardsL1[3]) {
             case unveiledCardsL1[3] = 1:
                 if (unveiledTinyWhelps >= 2) {
@@ -915,6 +957,7 @@ function checkMatchFourL1() {
         && unveiledCardsL1[3] != unveiledCardsL1[4]) {
         if (unveiledCardsL1[3] != unveiledCardsL2[0] && unveiledCardsL1[3] != unveiledCardsL2[1] && unveiledCardsL1[3] != unveiledCardsL2[2]
             && unveiledCardsL1[3] != unveiledCardsL2[3] && unveiledCardsL1[3] != unveiledCardsL2[4]) {
+            createjs.Sound.play("playerHit");
             switch (unveiledCardsL1[3]) {
                 case unveiledCardsL1[3] = 1:
                     life -= unveiledTinyWhelps;
@@ -941,6 +984,7 @@ function checkMatchFourL1() {
 function checkMatchFiveL1() {
     if (unveiledCardsL1[4] == unveiledCardsL1[1] || unveiledCardsL1[4] == unveiledCardsL1[2] || unveiledCardsL1[4] == unveiledCardsL1[3]
         || unveiledCardsL1[4] == unveiledCardsL1[0]) {
+        createjs.Sound.play("correct");
 
         switch (unveiledCardsL1[4]) {
             case unveiledCardsL1[4] = 1:
@@ -986,6 +1030,8 @@ function checkMatchFiveL1() {
         }
     } else if (unveiledCardsL1[4] == unveiledCardsL2[0] || unveiledCardsL1[4] == unveiledCardsL2[1] || unveiledCardsL1[4] == unveiledCardsL2[2]
         || unveiledCardsL1[4] == unveiledCardsL2[3] || unveiledCardsL1[4] == unveiledCardsL2[4]) {
+        createjs.Sound.play("correct");
+
         switch (unveiledCardsL1[4]) {
             case unveiledCardsL1[4] = 1:
                 if (unveiledTinyWhelps >= 2) {
@@ -1032,6 +1078,7 @@ function checkMatchFiveL1() {
         && unveiledCardsL1[4] != unveiledCardsL1[0]) {
         if (unveiledCardsL1[4] != unveiledCardsL2[0] && unveiledCardsL1[4] != unveiledCardsL2[1] && unveiledCardsL1[4] != unveiledCardsL2[2]
             && unveiledCardsL1[4] != unveiledCardsL2[3] && unveiledCardsL1[4] != unveiledCardsL2[4]) {
+            createjs.Sound.play("playerHit");
         switch (unveiledCardsL1[4]) {
             case unveiledCardsL1[4] = 1:
                 life -= unveiledTinyWhelps;
@@ -1058,6 +1105,7 @@ function checkMatchFiveL1() {
 function checkMatchOneL2() {
     if (unveiledCardsL2[0] == unveiledCardsL1[0] || unveiledCardsL2[0] == unveiledCardsL1[1] || unveiledCardsL2[0] == unveiledCardsL1[2]
         || unveiledCardsL2[0] == unveiledCardsL1[3] || unveiledCardsL2[0] == unveiledCardsL1[4]) {
+        createjs.Sound.play("correct");
 
         switch (unveiledCardsL2[0]) {
             case unveiledCardsL2[0] = 1:
@@ -1103,6 +1151,7 @@ function checkMatchOneL2() {
         }
     } else if (unveiledCardsL2[0] == unveiledCardsL2[1] || unveiledCardsL2[0] == unveiledCardsL2[2] || unveiledCardsL2[0] == unveiledCardsL2[3]
         || unveiledCardsL2[0] == unveiledCardsL2[4]) {
+        createjs.Sound.play("correct");
         switch (unveiledCardsL2[0]) {
             case unveiledCardsL2[0] = 1:
                 if (unveiledTinyWhelps >= 2) {
@@ -1149,6 +1198,7 @@ function checkMatchOneL2() {
         && unveiledCardsL2[0] != unveiledCardsL1[3] && unveiledCardsL2[0] != unveiledCardsL1[4]) {
         if (unveiledCardsL2[0] != unveiledCardsL2[1] && unveiledCardsL2[0] != unveiledCardsL2[2] && unveiledCardsL2[0] != unveiledCardsL2[3]
             && unveiledCardsL2[0] != unveiledCardsL2[4]) {
+            createjs.Sound.play("playerHit");
         switch (unveiledCardsL2[0]) {
             case unveiledCardsL2[0] = 1:
                 life -= unveiledTinyWhelps;
@@ -1175,6 +1225,7 @@ function checkMatchOneL2() {
 function checkMatchTwoL2() {
     if (unveiledCardsL2[1] == unveiledCardsL1[0] || unveiledCardsL2[1] == unveiledCardsL1[1] || unveiledCardsL2[1] == unveiledCardsL1[2]
         || unveiledCardsL2[1] == unveiledCardsL1[3] || unveiledCardsL2[1] == unveiledCardsL1[4]) {
+        createjs.Sound.play("correct");
 
         switch (unveiledCardsL2[1]) {
             case unveiledCardsL2[1] = 1:
@@ -1220,6 +1271,8 @@ function checkMatchTwoL2() {
         }
     } else if (unveiledCardsL2[1] == unveiledCardsL2[0] || unveiledCardsL2[1] == unveiledCardsL2[2] || unveiledCardsL2[1] == unveiledCardsL2[3]
         || unveiledCardsL2[1] == unveiledCardsL2[4]) {
+        createjs.Sound.play("correct");
+
         switch (unveiledCardsL2[1]) {
             case unveiledCardsL2[1] = 1:
                 if (unveiledTinyWhelps >= 2) {
@@ -1266,6 +1319,7 @@ function checkMatchTwoL2() {
         && unveiledCardsL2[1] != unveiledCardsL1[3] && unveiledCardsL2[1] != unveiledCardsL1[4]) {
         if (unveiledCardsL2[1] != unveiledCardsL2[0] && unveiledCardsL2[1] != unveiledCardsL2[2] && unveiledCardsL2[1] != unveiledCardsL2[3]
             && unveiledCardsL2[1] != unveiledCardsL2[4]) {
+            createjs.Sound.play("playerHit");
         switch (unveiledCardsL2[1]) {
             case unveiledCardsL2[1] = 1:
                 life -= unveiledTinyWhelps;
@@ -1292,6 +1346,7 @@ function checkMatchTwoL2() {
 function checkMatchThreeL2() {
     if (unveiledCardsL2[2] == unveiledCardsL1[0] || unveiledCardsL2[2] == unveiledCardsL1[1] || unveiledCardsL2[2] == unveiledCardsL1[2]
         || unveiledCardsL2[2] == unveiledCardsL1[3] || unveiledCardsL2[2] == unveiledCardsL1[4]) {
+        createjs.Sound.play("correct");
 
         switch (unveiledCardsL2[2]) {
             case unveiledCardsL2[2] = 1:
@@ -1337,6 +1392,8 @@ function checkMatchThreeL2() {
         }
     } else if (unveiledCardsL2[2] == unveiledCardsL2[1] || unveiledCardsL2[2] == unveiledCardsL2[0] || unveiledCardsL2[2] == unveiledCardsL2[3]
         || unveiledCardsL2[2] == unveiledCardsL2[4]) {
+        createjs.Sound.play("correct");
+
         switch (unveiledCardsL2[2]) {
             case unveiledCardsL2[2] = 1:
                 if (unveiledTinyWhelps >= 2) {
@@ -1383,6 +1440,7 @@ function checkMatchThreeL2() {
         && unveiledCardsL2[2] != unveiledCardsL1[3] && unveiledCardsL2[2] != unveiledCardsL1[4]) {
         if (unveiledCardsL2[2] != unveiledCardsL2[0] && unveiledCardsL2[2] != unveiledCardsL2[1] && unveiledCardsL2[2] != unveiledCardsL2[3]
             && unveiledCardsL2[2] != unveiledCardsL2[4]) {
+            createjs.Sound.play("playerHit");
             switch (unveiledCardsL2[2]) {
                 case unveiledCardsL2[2] = 1:
                     life -= unveiledTinyWhelps;
@@ -1409,6 +1467,7 @@ function checkMatchThreeL2() {
 function checkMatchFourL2() {
     if (unveiledCardsL2[3] == unveiledCardsL1[0] || unveiledCardsL2[3] == unveiledCardsL1[1] || unveiledCardsL2[3] == unveiledCardsL1[2]
         || unveiledCardsL2[3] == unveiledCardsL1[3] || unveiledCardsL2[3] == unveiledCardsL1[4]) {
+        createjs.Sound.play("correct");
 
         switch (unveiledCardsL2[3]) {
             case unveiledCardsL2[3] = 1:
@@ -1454,6 +1513,8 @@ function checkMatchFourL2() {
         }
     } else if (unveiledCardsL2[3] == unveiledCardsL2[0] || unveiledCardsL2[3] == unveiledCardsL2[2] || unveiledCardsL2[3] == unveiledCardsL2[1]
         || unveiledCardsL2[3] == unveiledCardsL2[4]) {
+        createjs.Sound.play("correct");
+
         switch (unveiledCardsL2[3]) {
             case unveiledCardsL2[3] = 1:
                 if (unveiledTinyWhelps >= 2) {
@@ -1500,6 +1561,7 @@ function checkMatchFourL2() {
         && unveiledCardsL2[3] != unveiledCardsL1[3] && unveiledCardsL2[3] != unveiledCardsL1[4]) {
         if (unveiledCardsL2[3] != unveiledCardsL2[0] && unveiledCardsL2[3] != unveiledCardsL2[2] && unveiledCardsL2[3] != unveiledCardsL2[1]
             && unveiledCardsL2[3] != unveiledCardsL2[4]) {
+            createjs.Sound.play("playerHit");
         switch (unveiledCardsL2[3]) {
             case unveiledCardsL2[3] = 1:
                 life -= unveiledTinyWhelps;
@@ -1526,6 +1588,7 @@ function checkMatchFourL2() {
 function checkMatchFiveL2() {
     if (unveiledCardsL2[4] == unveiledCardsL1[0] || unveiledCardsL2[4] == unveiledCardsL1[1] || unveiledCardsL2[4] == unveiledCardsL1[2]
         || unveiledCardsL2[4] == unveiledCardsL1[3] || unveiledCardsL2[4] == unveiledCardsL1[4]) {
+        createjs.Sound.play("correct");
 
         switch (unveiledCardsL2[4]) {
             case unveiledCardsL2[4] = 1:
@@ -1571,6 +1634,8 @@ function checkMatchFiveL2() {
         }
     } else if (unveiledCardsL2[4] == unveiledCardsL2[0] || unveiledCardsL2[4] == unveiledCardsL2[2] || unveiledCardsL2[4] == unveiledCardsL2[3]
         || unveiledCardsL2[4] == unveiledCardsL2[1]) {
+        createjs.Sound.play("correct");
+
         switch (unveiledCardsL2[4]) {
             case unveiledCardsL2[4] = 1:
                 if (unveiledTinyWhelps >= 2) {
@@ -1617,6 +1682,7 @@ function checkMatchFiveL2() {
         && unveiledCardsL2[4] != unveiledCardsL1[3] && unveiledCardsL2[4] != unveiledCardsL1[4]) {
         if (unveiledCardsL2[4] != unveiledCardsL2[0] && unveiledCardsL2[4] != unveiledCardsL2[2] && unveiledCardsL2[4] != unveiledCardsL2[3]
             && unveiledCardsL2[4] != unveiledCardsL2[1]) {
+            createjs.Sound.play("playerHit");
         switch (unveiledCardsL2[4]) {
             case unveiledCardsL2[4] = 1:
                 life -= unveiledTinyWhelps;
@@ -1800,6 +1866,7 @@ function main() {
     game = new createjs.Container();
     createUI();
     stage.addChild(game);
+    createjs.Sound.play("music", { loop: -1 });
 }
 
 function showInstructions() {
@@ -1855,7 +1922,5 @@ function createUI(): void {
 
     instructionsButton.addEventListener("click", showInstructions);
     instructionsButton.addEventListener("mouseover", instructionsButtonOver);
-    instructionsButton.addEventListener("mouseout", instructionsButtonOut);
-    
-     
+    instructionsButton.addEventListener("mouseout", instructionsButtonOut);   
 }
